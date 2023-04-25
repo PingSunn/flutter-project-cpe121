@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 
 class HomeBox extends StatelessWidget {
   String title = "";
-  double amount = 0.0;
+  String text = "";
   Color color = Colors.black;
-  double size = 0.0;
 
-  HomeBox(this.title, this.amount, this.color, this.size);
+  HomeBox(this.title, this.text, this.color);
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10.0),
-      decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(15)),
-      height: size,
+      decoration: BoxDecoration(color: color, border: Border.all(width: 2), borderRadius: BorderRadius.circular(10)),
+      height: 150,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             title,
@@ -22,7 +21,7 @@ class HomeBox extends StatelessWidget {
           ),
           Expanded(
               child: Text(
-            amount.toString(),
+            text,
             style: TextStyle(
               fontSize: 20,
             ),
