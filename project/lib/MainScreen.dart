@@ -3,6 +3,7 @@ import 'HomeBox.dart';
 import 'WeightControl.dart';
 import 'Diet.dart';
 import 'Sodium.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -24,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
         appBar: AppBar(
           title: Text(
             "Your health, Your life",
-            style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
           flexibleSpace: Container(
