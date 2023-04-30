@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
       title: "My Title",
       home: MainScreen(),
       theme: ThemeData(
-        fontFamily: GoogleFonts.kanit().fontFamily, // Use the fontFamily property of the TextStyle object
+        fontFamily: 'Work Sans', // Use the fontFamily property of the TextStyle object
+        //GoogleFonts.kanit().fontFamily
       ),
     );
   }
