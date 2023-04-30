@@ -23,9 +23,10 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "รักคนที่เขารักเรามันยากตรงไหนวะ",
-            style: TextStyle(color: Colors.white),
+            "Your health, Your life",
+            style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           ),
+          centerTitle: true,
           flexibleSpace: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: [
