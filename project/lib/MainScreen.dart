@@ -10,6 +10,10 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  // List<FoodMenu> menu = [
+  //   FoodMenu("Fried Rice", "100"),
+  //   FoodMenu("Pork fried", "100")
+  // ];
   @override
   void initState() {
     super.initState();
@@ -25,14 +29,6 @@ class _MainScreenState extends State<MainScreen> {
           title: Text(
             "รักคนที่เขารักเรามันยากตรงไหนวะ",
             style: TextStyle(color: Colors.white),
-          ),
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: [
-                Color(0xffeeaeca),
-                Color(0xff94bbe9)
-              ]),
-            ),
           ),
         ),
         body: Padding(
@@ -50,7 +46,7 @@ class _MainScreenState extends State<MainScreen> {
                 child: HomeBox(
                   "Weight control",
                   "{STATUS BMI}",
-                  Color(0xffeeaeca),
+                  Color(0xFF39D2C0),
                 ),
               ),
               SizedBox(
@@ -63,7 +59,7 @@ class _MainScreenState extends State<MainScreen> {
                     MaterialPageRoute(builder: (context) => Diet()),
                   );
                 },
-                child: HomeBox("Diet", "0", Color(0xff94bbe9)),
+                child: HomeBox("Diet", "0", Color(0xFF4B39EF)),
               ),
               SizedBox(
                 height: 30,
@@ -78,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
                 child: HomeBox(
                   "Sodium",
                   "0",
-                  Color(0xffeeaeca),
+                  Color(0xFFEE8B60),
                 ),
               )
             ],
