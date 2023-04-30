@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: "My Title",
       home: MainScreen(),
       theme: ThemeData(
-        fontFamily: GoogleFonts.lato().fontFamily, // Use the fontFamily property of the TextStyle object
+        fontFamily: GoogleFonts.kanit().fontFamily, // Use the fontFamily property of the TextStyle object
       ),
     );
   }
