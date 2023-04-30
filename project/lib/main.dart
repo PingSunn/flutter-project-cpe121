@@ -10,10 +10,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "My Title",
       home: MainScreen(),
       theme: ThemeData(
-        primarySwatch: Colors.lightBlue,
         fontFamily: GoogleFonts.lato().fontFamily, // Use the fontFamily property of the TextStyle object
       ),
     );
