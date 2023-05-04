@@ -1,19 +1,19 @@
 import 'package:animated_background/animated_background.dart';
-import 'package:database/DataList.dart';
-import 'package:database/PictureList.dart';
+import '/DataList.dart';
+import '/PictureList.dart';
 import 'package:flutter/material.dart';
 import 'counter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 //ไปดูบรรทัดที่ 88 แล้วฝากดูให้หน่อยว่ามันerrorอะไร(มันติดException overflow)
 //จริงๆไฟล์นี้มันรันได้แล้วแหละ แต่ถ้ามันรันWidgetอันนั้นได้ โค้ดจะสั้นลงเยอะมาก กราบขออภัยที่มีความสามารถแค่นี้;-;
-class testing extends StatefulWidget {
-  const testing({Key? key});
+class WeightControl extends StatefulWidget {
+  const WeightControl({Key? key});
 
   @override
-  State<testing> createState() => _testingState();
+  State<WeightControl> createState() => _WeightControlState();
 }
 
-class _testingState extends State<testing> with TickerProviderStateMixin {
+class _WeightControlState extends State<WeightControl> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

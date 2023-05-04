@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'HomeBox.dart';
 import 'WeightControl.dart';
+import 'WeightControl.dart';
 import 'Diet.dart';
 import 'Sodium.dart';
 
