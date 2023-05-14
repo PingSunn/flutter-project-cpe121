@@ -76,190 +76,174 @@ class _WeightControlState extends State<WeightControl> with TickerProviderStateM
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(30),
-                          /*gradient: LinearGradient(
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.topLeft,
-                              colors: [
-                                Color.fromARGB(255, 255, 255, 255),
-                                Color.fromARGB(255, 146, 250, 255)
-                              ]),*/
                           boxShadow: [BoxShadow(blurRadius: 20)]),
-                      height: 550,
+                      height: 600,
                       /*child: Column(//ถ้าทำได้ก็ฝากแก้ด้วยนะเพื่อนๆ เราทำละ Exception overflow infinity pixel
+                        children: [Expanded(child: Column(children: [TestScreen(text: "text"),PictureList(image: Image.asset('asset/Screenshot_20210915-211141_Instagram copy.jpg'))],),),],), ),),], ),),),));}}*/
+                      child: Column(
                         children: [
-                          Expanded(
-                            child: Column(
-                              children: [
-                                TestScreen(text: "text"),
-                                //PictureList(image: Image.asset('asset/Screenshot_20210915-211141_Instagram copy.jpg'))
-                              ],
-                            ),
+                          Table(
+                            children: [
+                              TableRow(
+                            children: [
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(1.0),
+                                  child: Center(child: Text("")),
+                                ),
+                              ),
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Center(
+                                      child: Image.asset(
+                                          'asset/Screenshot_20210915-211141_Instagram.jpg')),
+                                ),
+                              ),
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Center(
+                                      child: Image.asset(
+                                          'asset/Screenshot_20210915-211141_Instagram.jpg')),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ), 
-                    
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ));
-  }
-}*/
-                      child: Expanded(
-                        child: Table(
-                          children: [
-                            TableRow(
-                              children: [
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(1.0),
-                                    child: Center(child: Text("")),
-                                  ),
+                          TableRow(
+                            children: [
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 45.0),
+                                  child: Center(
+                                      child: Text(
+                                    "ผัก",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: 'Twist',
+                                        fontWeight: FontWeight.bold),
+                                  )),
                                 ),
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Center(
-                                        child: Image.asset(
-                                            'asset/Screenshot_20210915-211141_Instagram.jpg')),
-                                  ),
-                                ),
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Center(
-                                        child: Image.asset(
-                                            'asset/Screenshot_20210915-211141_Instagram.jpg')),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 45.0),
-                                    child: Center(
-                                        child: Text(
-                                      "ผัก",
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'Twist',
-                                          fontWeight: FontWeight.bold),
-                                    )),
-                                  ),
-                                ),
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 10.0),
-                                    child: Center(child: counter()),
-                                  ),
-                                ),
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 10.0),
-                                    child: Center(child: counter()),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 40.0),
-                                    child: Center(
-                                        child: Text(
-                                      "ข้าว",
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'Twist',
-                                          fontWeight: FontWeight.bold),
-                                    )),
-                                  ),
-                                ),
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 0.0),
-                                    child: Center(child: counter()),
-                                  ),
-                                ),
-                                TableCell(
+                              ),
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 10.0),
                                   child: Center(child: counter()),
                                 ),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 40.0),
-                                    child: Center(
-                                        child: Text(
-                                      'เนื้อสัตว์',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'Twist',
-                                          fontWeight: FontWeight.bold),
-                                    )),
-                                  ),
+                              ),
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 10.0),
+                                  child: Center(child: counter()),
                                 ),
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 0.0),
-                                    child: Center(child: counter()),
-                                  ),
+                              ),
+                            ],
+                          ),
+                          TableRow(
+                            children: [
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 40.0),
+                                  child: Center(
+                                      child: Text(
+                                    "ข้าว",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: 'Twist',
+                                        fontWeight: FontWeight.bold),
+                                  )),
                                 ),
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 0.0),
-                                    child: Center(child: counter()),
-                                  ),
+                              ),
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 0.0),
+                                  child: Center(child: counter()),
                                 ),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 45.0),
-                                    child: Center(
-                                        child: Text(
-                                      "",
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
-                                    )),
-                                  ),
+                              ),
+                              TableCell(
+                                child: Center(child: counter()),
+                              ),
+                            ],
+                          ),
+                          TableRow(
+                            children: [
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 40.0),
+                                  child: Center(
+                                      child: Text(
+                                    'เนื้อสัตว์',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: 'Twist',
+                                        fontWeight: FontWeight.bold),
+                                  )),
                                 ),
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 10.0),
-                                    child: Center(
-                                        child: Text(
-                                      "data",
-                                      style: TextStyle(fontFamily: 'Twist'),
-                                    )), //ฝากคนทำแก้ให้ที
-                                  ),
+                              ),
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 0.0),
+                                  child: Center(child: counter()),
                                 ),
-                                TableCell(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 10.0),
-                                    child: Center(
-                                        child: Text("data",
-                                            style: TextStyle(
-                                                fontFamily: 'Twist'))), //ฝากแก้
-                                  ),
+                              ),
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 0.0),
+                                  child: Center(child: counter()),
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
+                              ),
+                            ],
+                          ),
+                          TableRow(
+                            children: [
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 45.0),
+                                  child: Center(
+                                      child: Text(
+                                    "",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  )),
+                                ),
+                              ),
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 10.0),
+                                  child: Center(
+                                      child: Text(
+                                    "data",
+                                    style: TextStyle(fontFamily: 'Twist'),
+                                  )), //ฝากคนทำแก้ให้ที
+                                ),
+                              ),
+                              TableCell(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 10.0),
+                                  child: Center(
+                                      child: Text("data",
+                                          style: TextStyle(
+                                              fontFamily: 'Twist'))), //ฝากแก้
+                                ),
+                              ),
+                            ],
+                          ),],
+                          ),
+                          LinearPercentIndicator(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            animation: true,
+                            animationDuration: 1000,
+                            lineHeight: 20.0,
+                            percent: 0.5,
+                            center: Text("50.0%"),
+                            linearStrokeCap: LinearStrokeCap.round,
+                            progressColor: Colors.green,
+                          ),
+                        ],
                       ),
-                    ),
-                  ),Padding(
+                    )),
+                    Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Container(
                       padding: const EdgeInsets.all(10.0),
@@ -497,20 +481,28 @@ class _WeightControlState extends State<WeightControl> with TickerProviderStateM
                       ),
                     ),
                   ),
-                  /*IntrinsicWidth(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: (){
-                            print(counter.value);
-                          },
-                          child: Text("dataaaaaaaaaaaaaaaaaaa"),
-                        )
-                      ],
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: Center(
+                      child: ElevatedButton(onPressed: (){
+                        print("Confirm");
+                      }, child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Confirm"),
+                        ],
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                        foregroundColor: Colors.black,
+                        padding: EdgeInsets.symmetric(horizontal: 100),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                        textStyle: TextStyle(fontSize: 30,fontFamily: 'Twist')
+                      ),
+                      ),
                     ),
-                  )*/
-                ],
+                  )
+                ]
               ),
             ),
           ),
