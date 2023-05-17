@@ -4,16 +4,15 @@ import '/PictureList.dart';
 import 'package:flutter/material.dart';
 import 'counter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-//ไปดูบรรทัดที่ 88 แล้วฝากดูให้หน่อยว่ามันerrorอะไร(มันติดException overflow)
-//จริงๆไฟล์นี้มันรันได้แล้วแหละ แต่ถ้ามันรันWidgetอันนั้นได้ โค้ดจะสั้นลงเยอะมาก กราบขออภัยที่มีความสามารถแค่นี้;-;
-class WeightControl extends StatefulWidget {
-  const WeightControl({Key? key});
+
+class testing extends StatefulWidget {
+  const testing({Key? key});
 
   @override
-  State<WeightControl> createState() => _WeightControlState();
+  State<testing> createState() => _testingState();
 }
 
-class _WeightControlState extends State<WeightControl> with TickerProviderStateMixin {
+class _testingState extends State<testing> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -509,4 +508,3 @@ class _WeightControlState extends State<WeightControl> with TickerProviderStateM
         ));
   }
 }
-
