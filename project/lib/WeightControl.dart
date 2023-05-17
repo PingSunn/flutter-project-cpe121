@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mybasicapp/my_box.dart';
-import 'package:mybasicapp/RowLine.dart';
-import 'package:mybasicapp/stateful.dart';
+import 'StateWidget.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class WeightControl extends StatelessWidget {
+  const WeightControl({super.key});
 
   @override
   Widget build(BuildContext context) {
