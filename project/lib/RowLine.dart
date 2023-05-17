@@ -11,7 +11,7 @@ class RowLine extends StatelessWidget {
     return Container(
       child: Stack(children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(40, 6, 40, 0),
+          padding: EdgeInsets.zero,
           child: Container(
             alignment: Alignment.center,
             height: 34,
@@ -22,11 +22,11 @@ class RowLine extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.fromLTRB(40, 60, 40, 0),
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
           child: Container(
             alignment: Alignment.center,
             height: 34,
-            //color: Colors.amber,
+            //color: Colors.cyan,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
