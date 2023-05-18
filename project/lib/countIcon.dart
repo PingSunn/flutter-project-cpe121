@@ -28,14 +28,16 @@ class _MyWidgetState extends State<CountIcon> {
           GestureDetector(
             onTap: (){
               setState(() {
-                num-=1;
+                if(num>0){
+                  num-=1;
+                }
               });
             },
             child: Container(
               width: 20,
               height: 20,
               child: Image.asset(
-                'asset/image/chevron-left.png',
+                'assets/image/chevron-left.png',
                 width: 20,
                 height: 20,
               ),
@@ -68,7 +70,7 @@ class _MyWidgetState extends State<CountIcon> {
               width: 20,
               height: 20,
               child: Image.asset(
-                'asset/image/chevron-right.png',
+                'assets/image/chevron-right.png',
                 width: 20,
                 height: 20,
               ),
