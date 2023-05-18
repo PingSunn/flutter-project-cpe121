@@ -26,7 +26,6 @@ class RowLine extends StatelessWidget {
           child: Container(
             alignment: Alignment.center,
             height: 34,
-            //color: Colors.cyan,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -37,10 +36,13 @@ class RowLine extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
-                      height: 1.5,
-                      color: Color(0xffffffff),
+                      fontFamily: 'Twist',
+                      color: Colors.black,
                     ),
                   ),
+                ),
+                SizedBox(
+                  width: 24,
                 ),
                 Expanded(child: CountIcon()),
                 SizedBox(
@@ -53,12 +55,12 @@ class RowLine extends StatelessWidget {
                 Expanded(
                   child: Text(
                     type2,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
-                      height: 1.5,
-                      color: Color(0xffffffff),
+                      fontFamily: 'Twist',
+                      color: Colors.black,
                     ),
                   ),
                 ),
@@ -66,28 +68,6 @@ class RowLine extends StatelessWidget {
             ),
           ),
         ),
-        // Padding(
-        //   padding: EdgeInsets.fromLTRB(40, 114, 40, 0),
-        //   child: Container(
-        //     alignment: Alignment.center,
-        //     height: 34,
-        //     color: Colors.amber,
-        //     child: Row(
-        //       crossAxisAlignment: CrossAxisAlignment.center,
-        //     ),
-        //   ),
-        // ),
-        // Padding(
-        //   padding: EdgeInsets.fromLTRB(40, 168, 40, 0),
-        //   child: Container(
-        //     alignment: Alignment.center,
-        //     height: 34,
-        //     color: Colors.amber,
-        //     child: Row(
-        //       crossAxisAlignment: CrossAxisAlignment.center,
-        //     ),
-        //   ),
-        // )
       ]),
     );
   }
