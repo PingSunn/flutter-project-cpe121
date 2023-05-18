@@ -32,8 +32,8 @@ class _SmallWidgetState extends State<SmallWidget> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Image.asset('assets/image/1631549281278.png',height: 100,width: 100,),
-              Image.asset('assets/image/1631549281278.png',height: 100,width: 100,),
+              Image.asset('asset/image/1631549281278.png',height: 100,width: 100,),
+              Image.asset('asset/image/1631549281278.png',height: 100,width: 100,),
               //Image.asset('assets/image/chevron-left.png'),
             ],
           ),

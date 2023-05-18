@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'StateWidget.dart';
+import 'BigWidget.dart';
+
 
 class WeightControl extends StatelessWidget {
   const WeightControl({super.key});
@@ -34,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.all(10.0),
           child:  Column(children: [
             //MyBox(),
-            MyWidget(),
+            BigWidget(),
             SizedBox(height: 10,),
             //MyWidget(type1: 'data1',type2: 'data2',),
             SizedBox(height: 10,),
