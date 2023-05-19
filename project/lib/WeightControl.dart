@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'BigWidget.dart';
+import 'package:mybasicapp/BigWidget1.dart';
 
 
 class WeightControl extends StatelessWidget {
-  const WeightControl({super.key});
+
+  WeightControl({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.all(10.0),
           child:  Column(children: [
             //MyBox(),
-            BigWidget(),
+            BigWidget1(),
             SizedBox(height: 10,),
-            //MyWidget(type1: 'data1',type2: 'data2',),
-            SizedBox(height: 10,),
-            //RowLine(type1: 'test',type2: 'asjdkasjld',),
-            //MyBox(),
             Padding(
                     padding: const EdgeInsets.only(bottom: 10.0),
                     child: Center(

@@ -39,7 +39,7 @@ class _SmallWidgetState extends State<SmallWidget> {
           ),
         ),
         //SizedBox(height: 50,),
-        RowLine(type1: widget.data, type2: widget.result),
+        //RowLine(type1: widget.data, type2: widget.result),
         SizedBox(height: 30,),
         Row(
           children: [

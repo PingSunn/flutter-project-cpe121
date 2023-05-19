@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, file_names
 
 import 'package:flutter/material.dart';
+import 'package:mybasicapp/provider/dataCountIcon.dart';
 
 class CountIcon extends StatefulWidget {
-  const CountIcon({super.key});
+  final DataCount datacount;
+  
+  const CountIcon({super.key, required this.datacount});
 
   @override
   State<CountIcon> createState() => _MyWidgetState();
@@ -30,6 +33,7 @@ class _MyWidgetState extends State<CountIcon> {
               setState(() {
                 if(num>0){
                   num-=1;
+                  widget.datacount.SetData(num);                  
                 }
               });
             },
@@ -63,6 +67,7 @@ class _MyWidgetState extends State<CountIcon> {
             onTap: (){
               setState(() {
                 num+=1;
+                widget.datacount.SetData(num);
               });
               
             },
