@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/provider/dataCountIcon.dart';
 
+import 'RowLineText.dart';
 import 'countIcon.dart';
 
 class RowLine extends StatelessWidget {
@@ -8,9 +9,9 @@ class RowLine extends StatelessWidget {
   final DataCount datacount2 = DataCount();
   final DataCount dataLine;
   int result = 0;
-  final String type1,type2;
+  final String type1;
 
-  RowLine({Key? key,required this.type1,required this.type2, required this.dataLine,}) : super(key: key);
+  RowLine({Key? key,required this.type1, required this.dataLine,}) : super(key: key);
 
 
   
@@ -61,33 +62,24 @@ class RowLine extends StatelessWidget {
                 SizedBox(
                    width: 24,
                  ),
-                // Expanded(
-                //   child: Text(
-                //     type2,
-                //     textAlign: TextAlign.start,
-                //     style: TextStyle(
-                //       fontSize: 16,
-                //       fontWeight: FontWeight.w700,
-                //       fontFamily: 'Twist',
-                //       color: Colors.black,
-                //     ),
-                //   ),
-                // ),
-                Expanded(child: ElevatedButton(
-                        onPressed: () {
-                          getdataLine();
-                          print(getdataLine());
-                          print("Confirm");
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Confirm",
-                            ),
-                          ],
-                        ),
-                      ), )
+                Expanded(
+                  child: RowLineText(externalData: getdataLine(),)
+                ),
+                // Expanded(child: ElevatedButton(
+                //         onPressed: () {
+                //           getdataLine();
+                //           print(getdataLine());
+                //           print("Confirm");
+                //         },
+                //         child: Row(
+                //           mainAxisAlignment: MainAxisAlignment.center,
+                //           children: [
+                //             Text(
+                //               "Confirm",
+                //             ),
+                //           ],
+                //         ),
+                //       ), )
               ],
             ),
           ),
@@ -96,20 +88,12 @@ class RowLine extends StatelessWidget {
     );
   }
   
-  // int getdatacount1(){
-  //   print("getdatacount1");
-  //   return datacount1.data??=0;
-  // }
-  // int getdatacount2(){
-  //   print("getdatacount2");
-  //   return datacount2.data??=0;
-  // }
+
   int getdataLine(){
+    print("getdataline");
     int d1 = datacount1.data??=0;
     int d2 = datacount2.data??=0;
     result = d1+d2;
-    //dataLine.SetData(result);
-    //print("getdataLine");
     return result;
   }
 }
