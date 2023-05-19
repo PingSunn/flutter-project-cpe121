@@ -6,11 +6,11 @@ import 'countIcon.dart';
 class RowLine extends StatelessWidget {
   final DataCount datacount1 = DataCount();
   final DataCount datacount2 = DataCount();
-  //final DataCount dataLine;
+  final DataCount dataLine;
   int result = 0;
   final String type1,type2;
 
-  RowLine({Key? key,required this.type1,required this.type2,}) : super(key: key);
+  RowLine({Key? key,required this.type1,required this.type2, required this.dataLine,}) : super(key: key);
 
 
   
@@ -109,7 +109,7 @@ class RowLine extends StatelessWidget {
     int d2 = datacount2.data??=0;
     result = d1+d2;
     //dataLine.SetData(result);
-    print("getdataLine");
+    //print("getdataLine");
     return result;
   }
 }

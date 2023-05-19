@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/BigWidget1.dart';
 import 'package:mybasicapp/SmallWidget.dart';
+import 'package:mybasicapp/provider/dataCountIcon.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,10 +25,9 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
 
-  BigWidget1 Bwg = BigWidget1();
-
+  BigWidget1 Bwg = BigWidget1(DataBigWidget: DataCount(),);
+  //final DataCount Bwgdata = DataCount();
   MyHomePage({Key? key,required String title,}) : super(key: key);
-
   
 
   @override
@@ -67,7 +67,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20,),
-                BigWidget1(),
+                Bwg,
                 SizedBox(
                   height: 10,
                 ),
@@ -84,8 +84,10 @@ class MyHomePage extends StatelessWidget {
                   child: Center(
                     child: ElevatedButton(
                       onPressed: () {
-
-                        print(Bwg.DataBigWidget.data);
+                        
+                        print(Bwg.getRLdataMeat());
+                        print(Bwg.getRLdataRice());
+                        print(Bwg.getRLdataVeget());
                         print("Confirm");
                       },
                       child: Row(

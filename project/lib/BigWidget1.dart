@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/RowLine.dart';
+import 'package:mybasicapp/models/dataBigWidget.dart';
 import 'package:mybasicapp/provider/dataCountIcon.dart';
 
 class BigWidget1 extends StatelessWidget {
 
 
-  final RowLine RLdataMeat = RowLine(type1: 'เนื้อสัตว์', type2: '0',);
-  final RowLine RLdataRice = RowLine(type1: 'ข้าว', type2: '0',);
-  final RowLine RLdataVeget = RowLine(type1: 'ผัก', type2: '0');
+  final RowLine RLdataMeat = RowLine(type1: 'เนื้อสัตว์', type2: '0',dataLine: DataCount(),);
+  final RowLine RLdataRice = RowLine(type1: 'ข้าว', type2: '0',dataLine: DataCount(),);
+  final RowLine RLdataVeget = RowLine(type1: 'ผัก', type2: '0',dataLine: DataCount(),);
 
 
-  final DataCount DataBigWidget = DataCount();
+  final DataCount DataBigWidget;
 
-  BigWidget1({super.key});
+  BigWidget1({super.key, required this.DataBigWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +71,9 @@ class BigWidget1 extends StatelessWidget {
         Expanded(child: ElevatedButton(
                         onPressed: () {
 
-                          print(RLdataMeat.getdataLine());
-                          print(RLdataRice.getdataLine());
-                          print(RLdataVeget.getdataLine());
+                          print(getRLdataMeat());
+                          print(getRLdataRice());
+                          print(getRLdataVeget());
 
                           print("Confirm");
                         },
@@ -99,9 +100,23 @@ class BigWidget1 extends StatelessWidget {
         //                   progressColor: Colors.green,
         //                 ),
       ]),
-    );;
+    );
   }
   int getRLdataMeat(){
-    return RLdataMeat.getdataLine();
+    return getBigWidgetdata().data1;
+  }
+  int getRLdataRice(){
+    return getBigWidgetdata().data2;
+  }
+  int getRLdataVeget(){
+    return getBigWidgetdata().data3;
+  }
+  dataBigWidget getBigWidgetdata(){
+    dataBigWidget dataBwg = dataBigWidget(
+      data1: RLdataMeat.getdataLine(),
+      data2: RLdataRice.getdataLine(),
+      data3: RLdataVeget.getdataLine()
+    );
+    return dataBwg;
   }
 }
