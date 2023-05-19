@@ -68,6 +68,7 @@ class _MyWidgetState extends State<CountIcon> {
               setState(() {
                 num+=1;
                 widget.datacount.SetData(num);
+                print(widget.datacount.data);
               });
               
             },
@@ -85,5 +86,8 @@ class _MyWidgetState extends State<CountIcon> {
         ],
       ),
     );
+  }
+  int getDataIcon(){
+    return widget.datacount.data??=0;
   }
 }

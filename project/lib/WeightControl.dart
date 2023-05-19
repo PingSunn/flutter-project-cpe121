@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.all(10.0),
           child:  Column(children: [
             //MyBox(),
-            BigWidget1(DataBigWidget: DataCount(),),
+            BigWidget1(DataBigWidget: DataCount(), function: () {  },),
             SizedBox(height: 10,),
             Padding(
                     padding: const EdgeInsets.only(bottom: 10.0),

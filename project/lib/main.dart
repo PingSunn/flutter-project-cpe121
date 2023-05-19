@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
 
-  BigWidget1 Bwg = BigWidget1(DataBigWidget: DataCount(),);
+  BigWidget1 Bwg = BigWidget1(DataBigWidget: DataCount(),function:() {},);
   //final DataCount Bwgdata = DataCount();
   MyHomePage({Key? key,required String title,}) : super(key: key);
   

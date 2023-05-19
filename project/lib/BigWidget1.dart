@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/RowLine.dart';
+import 'package:mybasicapp/RowLine.dart';
 import 'package:mybasicapp/models/dataBigWidget.dart';
 import 'package:mybasicapp/provider/dataCountIcon.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class BigWidget1 extends StatelessWidget {
-
-
-  final RowLine RLdataMeat = RowLine(type1: 'เนื้อสัตว์', type2: '0',dataLine: DataCount(),);
-  final RowLine RLdataRice = RowLine(type1: 'ข้าว', type2: '0',dataLine: DataCount(),);
-  final RowLine RLdataVeget = RowLine(type1: 'ผัก', type2: '0',dataLine: DataCount(),);
+  
+  final VoidCallback function;
+  String d1 = "data1";
+  final RowLine RLdataMeat = RowLine(type1: 'เนื้อสัตว์',dataLine: DataCount(),);
+  final RowLine RLdataRice = RowLine(type1: 'ข้าว',dataLine: DataCount(),);
+  final RowLine RLdataVeget = RowLine(type1: 'ผัก',dataLine: DataCount(),);
 
 
   final DataCount DataBigWidget;
 
-  BigWidget1({super.key, required this.DataBigWidget});
+  BigWidget1({super.key, required this.DataBigWidget, required this.function});
 
   @override
   Widget build(BuildContext context) {
@@ -68,37 +71,37 @@ class BigWidget1 extends StatelessWidget {
           ],
         ),
 
-        Expanded(child: ElevatedButton(
-                        onPressed: () {
+        // Expanded(child: ElevatedButton(
+        //                 onPressed: () {
 
-                          print(getRLdataMeat());
-                          print(getRLdataRice());
-                          print(getRLdataVeget());
+        //                   print(getRLdataMeat());
+        //                   print(getRLdataRice());
+        //                   print(getRLdataVeget());
 
-                          print("Confirm");
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Confirm",
-                            ),
-                          ],
-                        ),
-                      ), ),
+        //                   print("Confirm");
+        //                 },
+        //                 child: Row(
+        //                   mainAxisAlignment: MainAxisAlignment.center,
+        //                   children: [
+        //                     Text(
+        //                       "Confirm",
+        //                     ),
+        //                   ],
+        //                 ),
+        //               ), ),
 
         SizedBox(height: 20,),
-        // LinearPercentIndicator(
-        //                   padding: const EdgeInsets.symmetric(horizontal: 20),
-        //                   animation: true,
-        //                   animationDuration: 1000,
-        //                   lineHeight: 20.0,
-        //                   percent: 0.5,//ใส่ค่าที่คำนวนออกมาได้ตรงนี้(เป็นทศนิยมนะ)
-        //                   center: Text("50.0%"),//ค่าที่เขียนตรงหลอดpercent *อย่าลบบรรทัด ignore นะ ระวังติด error
-        //                   // ignore: deprecated_member_use 
-        //                   linearStrokeCap: LinearStrokeCap.round,
-        //                   progressColor: Colors.green,
-        //                 ),
+        LinearPercentIndicator(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          animation: true,
+                          animationDuration: 1000,
+                          lineHeight: 20.0,
+                          percent: 0.5,//ใส่ค่าที่คำนวนออกมาได้ตรงนี้(เป็นทศนิยมนะ)
+                          center: Text("50.0%"),//ค่าที่เขียนตรงหลอดpercent *อย่าลบบรรทัด ignore นะ ระวังติด error
+                          // ignore: deprecated_member_use 
+                          linearStrokeCap: LinearStrokeCap.round,
+                          progressColor: Colors.green,
+                        ),
       ]),
     );
   }
