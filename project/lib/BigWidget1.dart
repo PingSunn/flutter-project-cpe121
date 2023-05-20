@@ -34,7 +34,6 @@ class BigWidget1 extends StatelessWidget {
             children: [
               Image.asset('asset/image/1631549281278.png',height: 100,width: 100,),
               Image.asset('asset/image/1631549281278.png',height: 100,width: 100,),
-              //Image.asset('assets/image/chevron-left.png'),
             ],
           ),
         ),
@@ -48,12 +47,12 @@ class BigWidget1 extends StatelessWidget {
         Row(
           children: [
             SizedBox(width: 120,),
-            Text('data',style: 
+            Text('ทัพพี',style: 
             TextStyle(
               fontFamily: 'Twist'
             ),),
             SizedBox(width: 60,),
-            Text('data',style: 
+            Text('ช้อน',style: 
             TextStyle(
               fontFamily: 'Twist'
             ),),

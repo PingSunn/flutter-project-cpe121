@@ -75,21 +75,21 @@ class SmallWidget extends StatelessWidget {
                           linearStrokeCap: LinearStrokeCap.round,
                           progressColor: Colors.green,
                         ),
-      Expanded(child: ElevatedButton(
-                       onPressed: () {
-                          RLsmall.SetData(RL.getdataLine());
-                        print(RLsmall.data);
-                        print("Confirm");
-                       },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                         children: [
-                          Text(
-                            "Confirm",
-                          ),
-                        ],
-                       ),
-                     ), ),
+      // Expanded(child: ElevatedButton(
+      //                  onPressed: () {
+      //                     RLsmall.SetData(RL.getdataLine());
+      //                   print(RLsmall.data);
+      //                   print("Confirm");
+      //                  },
+      //                 child: Row(
+      //                   mainAxisAlignment: MainAxisAlignment.center,
+      //                    children: [
+      //                     Text(
+      //                       "Confirm",
+      //                     ),
+      //                   ],
+      //                  ),
+      //                ), ),
       ]),
     );
   }
