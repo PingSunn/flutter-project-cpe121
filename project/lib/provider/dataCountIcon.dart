@@ -5,6 +5,7 @@ class DataCount {
   DataCount({this.data, this.onDataReturned});
 
   void SetData(int newdata){
+    print("Setdata");
     data = newdata;
     onDataReturned?.call(data);
   }

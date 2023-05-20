@@ -7,18 +7,27 @@ import 'countIcon.dart';
 class RowLine extends StatelessWidget {
   final DataCount datacount1 = DataCount();
   final DataCount datacount2 = DataCount();
-  final DataCount dataLine;
   int result = 0;
   final String type1;
 
-  RowLine({Key? key,required this.type1, required this.dataLine,}) : super(key: key);
+  RowLine({Key? key,required this.type1,}) : super(key: key);
 
+  Stream<int> TextData() async*{
+    int data = 0;
+    while(data <= 0){
+      await Future.delayed(Duration(seconds: 0));
+      getdataLine();
+      //print("going to push stream");
+      //data = newdata;
+      yield getdataLine();
+    }
+  }
 
   
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return  Container(
       child: Stack(children: [
         Padding(
           padding: EdgeInsets.zero,
@@ -63,7 +72,12 @@ class RowLine extends StatelessWidget {
                    width: 24,
                  ),
                 Expanded(
-                  child: RowLineText(externalData: getdataLine(),)
+                  child: StreamBuilder(
+                    stream: TextData(),
+                    builder: (context, snapshot) {
+                      return RowLineText(externalData: snapshot.data.toString(),);
+                    }
+                  )
                 ),
                 // Expanded(child: ElevatedButton(
                 //         onPressed: () {
@@ -90,7 +104,7 @@ class RowLine extends StatelessWidget {
   
 
   int getdataLine(){
-    print("getdataline");
+    //print("getdataline");
     int d1 = datacount1.data??=0;
     int d2 = datacount2.data??=0;
     result = d1+d2;

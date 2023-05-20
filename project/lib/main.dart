@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/BigWidget1.dart';
 import 'package:mybasicapp/SmallWidget.dart';
-import 'package:mybasicapp/provider/dataCountIcon.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +24,9 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
 
-  BigWidget1 Bwg = BigWidget1(DataBigWidget: DataCount(),function:() {},);
+  BigWidget1 Bwg = BigWidget1();
+  SmallWidget Swg1 = SmallWidget(total: 'รวม(กรัม)',data: 'ผลไม้',unit1: 'ผล',unit2: 'ชิ้น',);
+  SmallWidget Swg2 = SmallWidget(total: 'รวม(มล.)',data: 'นม',unit1: 'กล่อง',unit2: 'แก้ว',);
   //final DataCount Bwgdata = DataCount();
   MyHomePage({Key? key,required String title,}) : super(key: key);
   
@@ -71,11 +72,11 @@ class MyHomePage extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                SmallWidget(total: 'รวม(กรัม)',data: 'ผลไม้',result: '0',unit1: 'ผล',unit2: 'ชิ้น',),
+                Swg1,
                 SizedBox(
                   height: 10,
                 ),
-                SmallWidget(total: 'รวม(มล.)',data: 'นม',result: '0',unit1: 'กล่อง',unit2: 'แก้ว',),
+                Swg2,
                 SizedBox(
                   height: 20,
                 ),
@@ -88,6 +89,8 @@ class MyHomePage extends StatelessWidget {
                         print(Bwg.getRLdataMeat());
                         print(Bwg.getRLdataRice());
                         print(Bwg.getRLdataVeget());
+                        print(Swg1.getRLSmallWidget());
+
                         print("Confirm");
                       },
                       child: Row(

@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:mybasicapp/provider/dataCountIcon.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'RowLine.dart';
 
-class SmallWidget extends StatefulWidget {
-  final String data,total,result,unit1,unit2;
-  const SmallWidget({Key? key,required this.data,required this.total,required this.result,required this.unit1,required this.unit2}) : super(key: key);
+class SmallWidget extends StatelessWidget {
+  final String data,total,unit1,unit2;
+  DataCount RLsmall = DataCount();
+  int result = 0;
+  SmallWidget({Key? key,required this.data,required this.total,required this.unit1,required this.unit2}) : super(key: key);
+  
 
-  @override
-  State<SmallWidget> createState() => _SmallWidgetState();
-}
-
-class _SmallWidgetState extends State<SmallWidget> {
   @override
   Widget build(BuildContext context) {
+  RowLine RL = RowLine(type1: data);
+
+  
+
     return Container(
       height: 250,
       decoration: BoxDecoration(
@@ -39,22 +42,22 @@ class _SmallWidgetState extends State<SmallWidget> {
           ),
         ),
         //SizedBox(height: 50,),
-        //RowLine(type1: widget.data, type2: widget.result),
+        RL,
         SizedBox(height: 30,),
         Row(
           children: [
             SizedBox(width: 120,),
-            Text(widget.unit1,style: 
+            Text(unit1,style: 
             TextStyle(
               fontFamily: 'Twist'
             ),),
             SizedBox(width: 60,),
-            Text(widget.unit2,style: 
+            Text(unit2,style: 
             TextStyle(
               fontFamily: 'Twist'
             ),),
             SizedBox(width: 40,),
-            Text(widget.total,style: 
+            Text(total,style: 
             TextStyle(
               fontFamily: 'Twist'
             ),)
@@ -72,7 +75,25 @@ class _SmallWidgetState extends State<SmallWidget> {
                           linearStrokeCap: LinearStrokeCap.round,
                           progressColor: Colors.green,
                         ),
+      Expanded(child: ElevatedButton(
+                       onPressed: () {
+                          RLsmall.SetData(RL.getdataLine());
+                        print(RLsmall.data);
+                        print("Confirm");
+                       },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                         children: [
+                          Text(
+                            "Confirm",
+                          ),
+                        ],
+                       ),
+                     ), ),
       ]),
     );
+  }
+  int getRLSmallWidget(){
+    return RLsmall.data??=0;
   }
 }

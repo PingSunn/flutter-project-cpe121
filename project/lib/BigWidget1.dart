@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/RowLine.dart';
-import 'package:mybasicapp/RowLine.dart';
 import 'package:mybasicapp/models/dataBigWidget.dart';
-import 'package:mybasicapp/provider/dataCountIcon.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class BigWidget1 extends StatelessWidget {
   
-  final VoidCallback function;
-  String d1 = "data1";
-  final RowLine RLdataMeat = RowLine(type1: 'เนื้อสัตว์',dataLine: DataCount(),);
-  final RowLine RLdataRice = RowLine(type1: 'ข้าว',dataLine: DataCount(),);
-  final RowLine RLdataVeget = RowLine(type1: 'ผัก',dataLine: DataCount(),);
+  final RowLine RLdataMeat = RowLine(type1: 'เนื้อสัตว์',);
+  final RowLine RLdataRice = RowLine(type1: 'ข้าว',);
+  final RowLine RLdataVeget = RowLine(type1: 'ผัก',);
 
 
-  final DataCount DataBigWidget;
-
-  BigWidget1({super.key, required this.DataBigWidget, required this.function});
+  BigWidget1({super.key,});
 
   @override
   Widget build(BuildContext context) {

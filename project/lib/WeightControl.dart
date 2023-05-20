@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/BigWidget1.dart';
-import 'package:mybasicapp/provider/dataCountIcon.dart';
 
 
 class WeightControl extends StatelessWidget {
@@ -37,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.all(10.0),
           child:  Column(children: [
             //MyBox(),
-            BigWidget1(DataBigWidget: DataCount(), function: () {  },),
+            BigWidget1(),
             SizedBox(height: 10,),
             Padding(
                     padding: const EdgeInsets.only(bottom: 10.0),

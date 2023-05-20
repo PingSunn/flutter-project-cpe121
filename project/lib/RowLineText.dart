@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RowLineText extends StatefulWidget {
-  final int externalData;
+  final String externalData;
 
   const RowLineText({Key? key, required this.externalData}) : super(key: key);
 
@@ -10,14 +10,13 @@ class RowLineText extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<RowLineText> {
-  int internalData = 0;
+  String internalData = '';
 
   @override
   void didUpdateWidget(RowLineText oldWidget) {
     if (oldWidget.externalData != widget.externalData) {
       setState(() {
         internalData = widget.externalData;
-        print("setData");
       });
     }
     super.didUpdateWidget(oldWidget);
