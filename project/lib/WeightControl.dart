@@ -87,6 +87,7 @@ class MyHomePage extends StatelessWidget {
                         print(Bwg.getRLdataRice());
                         print(Bwg.getRLdataVeget());
                         print(Swg1.getRLSmallWidget());
+                        print(Swg2.getRLSmallWidget());
 
                         print("Confirm");
                       },

@@ -6,13 +6,14 @@ import 'RowLine.dart';
 class SmallWidget extends StatelessWidget {
   final String data,total,unit1,unit2;
   DataCount RLsmall = DataCount();
+  RowLine RL = RowLine(type1: '');
   int result = 0;
   SmallWidget({Key? key,required this.data,required this.total,required this.unit1,required this.unit2}) : super(key: key);
   
 
   @override
   Widget build(BuildContext context) {
-  RowLine RL = RowLine(type1: data);
+  RL = RowLine(type1: data);
 
   
 
@@ -94,6 +95,7 @@ class SmallWidget extends StatelessWidget {
     );
   }
   int getRLSmallWidget(){
+    RLsmall.SetData(RL.getdataLine());
     return RLsmall.data??=0;
   }
 }
