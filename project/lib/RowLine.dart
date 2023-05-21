@@ -107,7 +107,7 @@ class RowLine extends StatelessWidget {
     //print("getdataline");
     int d1 = datacount1.data??=0;
     int d2 = datacount2.data??=0;
-    result = d1+d2;
+    result = (d1)*15+(d2)*60;
     return result;
   }
 }

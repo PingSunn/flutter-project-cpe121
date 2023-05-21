@@ -9,9 +9,8 @@ class BigWidget1 extends StatelessWidget {
   final RowLine RLdataRice = RowLine(type1: 'ข้าว',);
   final RowLine RLdataVeget = RowLine(type1: 'ผัก',);
 
-
   BigWidget1({super.key,});
-
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,7 +50,7 @@ class BigWidget1 extends StatelessWidget {
             TextStyle(
               fontFamily: 'Twist'
             ),),
-            SizedBox(width: 60,),
+            SizedBox(width: 70,),
             Text('ช้อน',style: 
             TextStyle(
               fontFamily: 'Twist'
@@ -66,11 +65,10 @@ class BigWidget1 extends StatelessWidget {
 
         // Expanded(child: ElevatedButton(
         //                 onPressed: () {
-
         //                   print(getRLdataMeat());
         //                   print(getRLdataRice());
         //                   print(getRLdataVeget());
-
+        //                   print('All = '+getAllWidgetData().toString());
         //                   print("Confirm");
         //                 },
         //                 child: Row(
@@ -84,13 +82,14 @@ class BigWidget1 extends StatelessWidget {
         //               ), ),
 
         SizedBox(height: 20,),
+        // ProgressbarState(),
         LinearPercentIndicator(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           animation: true,
                           animationDuration: 1000,
                           lineHeight: 20.0,
-                          percent: 0.5,//ใส่ค่าที่คำนวนออกมาได้ตรงนี้(เป็นทศนิยมนะ)
-                          center: Text("50.0%"),//ค่าที่เขียนตรงหลอดpercent *อย่าลบบรรทัด ignore นะ ระวังติด error
+                          percent: getAllWidgetData(),//ใส่ค่าที่คำนวนออกมาได้ตรงนี้(เป็นทศนิยมนะ)
+                          center: Text(getAllWidgetData().toStringAsFixed(0)+"%"),//ค่าที่เขียนตรงหลอดpercent *อย่าลบบรรทัด ignore นะ ระวังติด error
                           // ignore: deprecated_member_use 
                           linearStrokeCap: LinearStrokeCap.round,
                           progressColor: Colors.green,
@@ -115,4 +114,32 @@ class BigWidget1 extends StatelessWidget {
     );
     return dataBwg;
   }
+  double getAllWidgetData(){
+    double result = (RLdataMeat.getdataLine()+RLdataRice.getdataLine()+RLdataVeget.getdataLine())/1000;
+    return result;
+  }
 }
+
+// class ProgressbarState extends StatefulWidget {
+//   const ProgressbarState({super.key});
+
+//   @override
+//   State<ProgressbarState> createState() => _ProgressbarStateState();
+// }
+
+// class _ProgressbarStateState extends State<ProgressbarState> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return LinearPercentIndicator(
+//                         padding: const EdgeInsets.symmetric(horizontal: 20),
+//                         animation: true,
+//                         animationDuration: 1000,
+//                         lineHeight: 20.0,
+//                         percent: 0.5,//ใส่ค่าที่คำนวนออกมาได้ตรงนี้(เป็นทศนิยมนะ)
+//                         center: Text("%"),//ค่าที่เขียนตรงหลอดpercent *อย่าลบบรรทัด ignore นะ ระวังติด error
+//                         // ignore: deprecated_member_use 
+//                         linearStrokeCap: LinearStrokeCap.round,
+//                         progressColor: Colors.green,
+//                       );
+//   }
+// }

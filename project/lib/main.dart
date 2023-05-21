@@ -28,8 +28,8 @@ class MyHomePage extends StatelessWidget {
   SmallWidget Swg1 = SmallWidget(
     total: 'รวม(กรัม)',
     data: 'ผลไม้',
-    unit1: 'ผล',
-    unit2: 'ชิ้น',
+    unit1: '  ผล',
+    unit2: '   ชิ้น',
   );
   SmallWidget Swg2 = SmallWidget(
     total: 'รวม(มล.)',
