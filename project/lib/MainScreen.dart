@@ -3,7 +3,6 @@ import 'HomeBox.dart';
 import 'WeightControl.dart';
 import 'Diet.dart';
 import 'Sodium.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MainScreen extends StatefulWidget {
   @override
