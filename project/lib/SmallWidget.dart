@@ -56,7 +56,7 @@ class SmallWidget extends StatelessWidget {
             TextStyle(
               fontFamily: 'Twist'
             ),),
-            SizedBox(width: 40,),
+            SizedBox(width: 50,),
             Text(total,style: 
             TextStyle(
               fontFamily: 'Twist'
