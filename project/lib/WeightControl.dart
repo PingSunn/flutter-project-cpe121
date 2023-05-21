@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mybasicapp/BigWidget1.dart';
 import 'package:mybasicapp/SmallWidget.dart';
 
-
 class WeightControl extends StatelessWidget {
-
   WeightControl({super.key});
 
   @override
@@ -14,25 +12,44 @@ class WeightControl extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-       home: MyHomePage(title: 'Flutter Demo Home Page',),
+      home: MyHomePage(
+        title: 'Flutter Demo Home Page',
+      ),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-
   BigWidget1 Bwg = BigWidget1();
-  SmallWidget Swg1 = SmallWidget(total: 'รวม(กรัม)',data: 'ผลไม้',unit1: 'ผล',unit2: 'ชิ้น',);
-  SmallWidget Swg2 = SmallWidget(total: 'รวม(มล.)',data: 'นม',unit1: 'กล่อง',unit2: 'แก้ว',);
+  SmallWidget Swg1 = SmallWidget(
+    total: '  รวม(กรัม)',
+    data: 'ผลไม้',
+    unit1: ' ผล',
+    unit2: '  ชิ้น',
+  );
+  SmallWidget Swg2 = SmallWidget(
+    total: 'รวม(มล.)',
+    data: 'นม',
+    unit1: 'กล่อง',
+    unit2: 'แก้ว',
+  );
   //final DataCount Bwgdata = DataCount();
-  MyHomePage({Key? key,required String title,}) : super(key: key);
-  
+  MyHomePage({
+    Key? key,
+    required String title,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(
+        backgroundColor: Colors.black,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage('asset/image/yellow box background.jpg'),
+          fit: BoxFit.fitHeight
+          )
+        ),
+        child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(10.0),
             child: Column(
@@ -64,7 +81,9 @@ class MyHomePage extends StatelessWidget {
                     textAlign: TextAlign.start,
                   ),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 Bwg,
                 SizedBox(
                   height: 10,
@@ -82,7 +101,6 @@ class MyHomePage extends StatelessWidget {
                   child: Center(
                     child: ElevatedButton(
                       onPressed: () {
-                        
                         print(Bwg.getRLdataMeat());
                         print(Bwg.getRLdataRice());
                         print(Bwg.getRLdataVeget());
@@ -95,8 +113,7 @@ class MyHomePage extends StatelessWidget {
                         children: [
                           Text(
                             "Confirm",
-                            style:
-                                TextStyle(fontFamily: 'Twist', fontSize: 32),
+                            style: TextStyle(fontFamily: 'Twist', fontSize: 32),
                           ),
                         ],
                       ),
@@ -114,6 +131,8 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
           ),
-        ));
+        )
+      )
+    );
   }
 }

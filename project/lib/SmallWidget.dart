@@ -13,9 +13,6 @@ class SmallWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   RowLine RL = RowLine(type1: data);
-
-  
-
     return Container(
       height: 250,
       decoration: BoxDecoration(
