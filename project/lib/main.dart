@@ -1,6 +1,9 @@
+import 'package:bmiaja/model/Mbmi.dart';
+import 'package:bmiaja/providers/bmi_provider.dart';
+import 'package:bmiaja/screens/Diet.dart';
+import 'package:bmiaja/screens/history_screen.dart';
 import 'package:flutter/material.dart';
-import 'MainScreen.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,12 +12,18 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "My Title",
-      home: MainScreen(),
-      theme: ThemeData(
-        fontFamily: GoogleFonts.lato().fontFamily, // Use the fontFamily property of the TextStyle object
+    return ChangeNotifierProvider(
+      create: (context) => BmiProvider(),
+      child: MaterialApp(
+        title: 'BMI App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => MyDietapp(),
+          '/history': (context) => HistoryScreen(),
+        },
       ),
     );
   }
