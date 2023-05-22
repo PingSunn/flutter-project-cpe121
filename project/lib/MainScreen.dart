@@ -23,8 +23,8 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "HypnoCare",
-            style: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold, fontFamily: 'Itim'),
+            "Your health, Your life",
+            style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
           flexibleSpace: Container(

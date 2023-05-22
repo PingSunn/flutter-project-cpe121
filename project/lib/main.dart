@@ -12,9 +12,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "My Title",
       home: MainScreen(),
-      theme: ThemeData(
-          // Use the fontFamily property of the TextStyle object
-          fontFamily: 'Prompt'),
+      theme: ThemeData(// Use the fontFamily property of the TextStyle object
+          ),
     );
   }
 }
