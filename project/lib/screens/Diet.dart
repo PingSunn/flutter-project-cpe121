@@ -87,11 +87,7 @@ class _MyDietState extends State<MyDiet> {
   void _calculate() {
     final double? height = double.tryParse(_heightControl.value.text);
     final double? weight = double.tryParse(_weightControl.value.text);
-    if (height == null ||
-        height <= 0 ||
-        weight == null ||
-        weight <= 0 ||
-        height >= 10) {
+    if (height == null || height <= 0 || weight == null || weight <= 0 || height >= 10) {
       setState(() {
         _bmi = null;
         _message = "ต้องมีอะไรผิดพลาดตรงไหน\nป้อนข้อมูลใหม่^^";
@@ -121,8 +117,7 @@ class _MyDietState extends State<MyDiet> {
       var nnbmi = nnbimControl;
       var mmess = mmessControl;
 
-      Mbmi statement =
-          Mbmi(mess: mmess, nbmi: double.parse(nnbmi), date: DateTime.now());
+      Mbmi statement = Mbmi(mess: mmess, nbmi: double.parse(nnbmi), date: DateTime.now());
 
       var provider = Provider.of<BmiProvider>(context, listen: false);
       provider.addMbmi(statement);
@@ -160,8 +155,7 @@ class _MyDietState extends State<MyDiet> {
                     textAlign: TextAlign.center,
                   ),
                   TextField(
-                    decoration:
-                        new InputDecoration(labelText: "น้ำหนัก(กิโลกรัม)"),
+                    decoration: new InputDecoration(labelText: "น้ำหนัก(กิโลกรัม)"),
                     keyboardType: TextInputType.number,
                     controller: _weightControl,
                   ),
