@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'HomeBox.dart';
 import 'WeightControl.dart';
-import 'Diet.dart';
 import 'Sodium.dart';
+import 'package:project/screens/Diet.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -61,7 +61,7 @@ class _MainScreenState extends State<MainScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Diet()),
+                    MaterialPageRoute(builder: (context) => MyDietApp()),
                   );
                 },
                 child: HomeBox("Diet", "0", Color(0xff94bbe9)),
