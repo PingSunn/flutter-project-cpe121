@@ -1,5 +1,5 @@
-import 'package:bmiaja/db/dbbmi_db.dart';
-import 'package:bmiaja/model/Mbmi.dart';
+import 'package:project/db/dbbmi_db.dart';
+import 'package:project/model/Mbmi.dart';
 import 'package:flutter/foundation.dart';
 
 class BmiProvider with ChangeNotifier {

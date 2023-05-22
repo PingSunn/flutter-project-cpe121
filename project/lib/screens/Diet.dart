@@ -1,6 +1,6 @@
-import 'package:bmiaja/model/Mbmi.dart';
-import 'package:bmiaja/providers/bmi_provider.dart';
-import 'package:bmiaja/screens/history_screen.dart';
+import 'package:project/model/Mbmi.dart';
+import 'package:project/providers/bmi_provider.dart';
+import 'package:project/screens/history_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

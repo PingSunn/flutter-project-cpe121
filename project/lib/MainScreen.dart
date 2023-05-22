@@ -28,10 +28,10 @@ class _MainScreenState extends State<MainScreen> {
           ),
           flexibleSpace: Container(
             decoration: const BoxDecoration(
-              gradient: LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: [
-                Color(0xffeeaeca),
-                Color(0xff94bbe9)
-              ]),
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [Color(0xffeeaeca), Color(0xff94bbe9)]),
             ),
           ),
         ),

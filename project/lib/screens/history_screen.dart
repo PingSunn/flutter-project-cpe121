@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:bmiaja/model/Mbmi.dart';
+import 'package:project/model/Mbmi.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:bmiaja/providers/bmi_provider.dart';
+import 'package:project/providers/bmi_provider.dart';
 import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
 
