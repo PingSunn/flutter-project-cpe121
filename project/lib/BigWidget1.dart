@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/RowLine.dart';
 import 'package:mybasicapp/models/dataBigWidget.dart';
@@ -113,7 +115,7 @@ class BigWidget1 extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        //ProgressbarState(),
+        //ProgressbarState(result: getAllWidgetData(),),
         LinearPercentIndicator(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           animation: true,
@@ -156,7 +158,8 @@ class BigWidget1 extends StatelessWidget {
 }
 
 class ProgressbarState extends StatefulWidget {
-  const ProgressbarState({super.key});
+  const ProgressbarState({super.key, required this.result});
+  final result;
 
   @override
   State<ProgressbarState> createState() => _ProgressbarStateState();
@@ -164,6 +167,33 @@ class ProgressbarState extends StatefulWidget {
 
 class _ProgressbarStateState extends State<ProgressbarState> {
   double percentage = 0;
+  late Timer timer;
+
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+    percentage = widget.result;
+  }
+
+  void startTimer() {
+    const oneSec = const Duration(seconds: 1);
+    timer = Timer.periodic(oneSec, (timer) {
+      setState(() {
+        if (percentage > 0.4) {
+          timer.cancel();
+        } else {
+          percentage += 0.1;
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Column(

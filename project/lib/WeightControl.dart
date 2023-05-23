@@ -53,31 +53,31 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          print(Bwg.getRLdataMeat());
-          print(Bwg.getRLdataRice());
-          print(Bwg.getRLdataVeget());
-          print(Swg1.getRLSmallWidget());
-          print("All = " + Bwg.getAllWidgetData().toString());
-        },
-        label: Text(
-          'Confirm',
-          style: TextStyle(
-            fontSize: 20,
-            fontFamily: 'Twist',
-            shadows: [
-              BoxShadow(
-                color: Colors.black,
-                offset: Offset(2, 2),
-                spreadRadius: 10,
-              )
-            ],
-          ),
-        ),
-        backgroundColor: Color(0xffeeaeca),
-      ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButton: FloatingActionButton.extended(
+      //   onPressed: () {
+      //     print(Bwg.getRLdataMeat());
+      //     print(Bwg.getRLdataRice());
+      //     print(Bwg.getRLdataVeget());
+      //     print(Swg1.getRLSmallWidget());
+      //     print("All = " + Bwg.getAllWidgetData().toString());
+      //   },
+      //   label: Text(
+      //     'Confirm',
+      //     style: TextStyle(
+      //       fontSize: 20,
+      //       fontFamily: 'Twist',
+      //       shadows: [
+      //         BoxShadow(
+      //           color: Colors.black,
+      //           offset: Offset(2, 2),
+      //           spreadRadius: 10,
+      //         )
+      //       ],
+      //     ),
+      //   ),
+      //   backgroundColor: Color(0xffeeaeca),
+      // ),
       backgroundColor: Colors.white,
       body: CustomScrollView(slivers: [
         SliverAppBar(
