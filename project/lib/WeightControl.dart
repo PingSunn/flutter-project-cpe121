@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/BigWidget1.dart';
 import 'package:mybasicapp/SmallWidget.dart';
@@ -53,61 +54,119 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Column(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          print(Bwg.getRLdataMeat());
+          print(Bwg.getRLdataRice());
+          print(Bwg.getRLdataVeget());
+          print(Swg1.getRLSmallWidget());
+          print("All = " + Bwg.getAllWidgetData().toString());
+        },
+        label: Text(
+          'Confirm',
+          style: TextStyle(
+            fontSize: 20,
+            fontFamily: 'Twist',
+            shadows: [
+              BoxShadow(
+                color: Colors.black,
+                offset: Offset(2, 2),
+                spreadRadius: 10,
+              )
+            ],
+          ),
+        ),
+        backgroundColor: Color(0xffeeaeca),
+      ),
+      backgroundColor: Colors.white,
+      body: CustomScrollView(slivers: [
+        SliverAppBar(
+          pinned: false,
+          floating: false,
+          expandedHeight: 200,
+          shadowColor: Colors.black,
+          backgroundColor: Color(0xffeeaeca),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              size: 30,
+              shadows: [
+                BoxShadow(
+                    color: Colors.black,
+                    offset: Offset(5, 5),
+                    spreadRadius: 10,
+                    blurRadius: 10)
+              ],
+            ),
+          ),
+          flexibleSpace: FlexibleSpaceBar(
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 40,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 15.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "อาหารจานสุขภาพ",
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Twist',
-                            color: Colors.black),
-                        textAlign: TextAlign.center,
-                      ),
-                      IconButton(
-              icon: Icon(Icons.history),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return History();
-                }));
-              },
-            )
+                Text(
+                  'อาหารจานสุขภาพ',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Twist',
+                    shadows: [
+                      BoxShadow(
+                          color: Colors.black,
+                          offset: Offset(5, 5),
+                          spreadRadius: 10,
+                          blurRadius: 10)
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0),
                   child: Text(
-                    "Healthy Food",
+                    "อาหารจานสุขภาพ",
                     style: TextStyle(
-                      fontSize: 10,
-                      color: Colors.black,
-                    ),
-                    textAlign: TextAlign.start,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Twist',
+                        color: Colors.black),
+                    textAlign: TextAlign.center,
                   ),
                 ),
+              ],
+            ),
+            background: Container(
+              foregroundDecoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.5),
+              ),
+              child: ClipRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                  child: Image.asset(
+                    'asset/image/healthy food.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        SliverPadding(
+            padding: EdgeInsets.all(10.0),
+            sliver: SliverList(
+                delegate: SliverChildListDelegate(
+              [
                 SizedBox(
                   height: 20,
                 ),
                 Bwg,
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Swg1,
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Swg2,
                 SizedBox(
@@ -160,8 +219,8 @@ class MyHomePage extends StatelessWidget {
                   ),
                 )
               ],
-            ),
-          ),
-        ));
+            )))
+      ]),
+    );
   }
 }

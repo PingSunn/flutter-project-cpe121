@@ -20,11 +20,12 @@ class SmallWidget extends StatelessWidget {
     return Container(
       height: 250,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-              colors: [Color.fromARGB(255, 255, 255, 255), Color.fromARGB(255, 236, 255, 174)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
+        color: Colors.white,
+        // gradient: LinearGradient(
+        //       colors: [Color.fromARGB(255, 255, 255, 255), Color.fromARGB(255, 236, 255, 174)],
+        //       begin: Alignment.topLeft,
+        //       end: Alignment.bottomRight,
+        //     ),
         borderRadius: BorderRadius.circular(29),
         boxShadow: [BoxShadow(blurRadius: 20)]
 
