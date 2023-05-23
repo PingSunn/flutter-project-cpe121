@@ -122,17 +122,14 @@ class MyHomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 15.0),
-                  child: Text(
-                    "อาหารจานสุขภาพ",
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Twist',
-                        color: Colors.black),
-                    textAlign: TextAlign.center,
-                  ),
+                Text(
+                  "Healthy Food",
+                  style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Twist',
+                      color: Colors.white),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
