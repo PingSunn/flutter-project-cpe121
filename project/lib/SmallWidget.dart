@@ -13,7 +13,7 @@ class SmallWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  RL = RowLine(type1: data);
+  RowLine RL = RowLine(type1: data);
 
   
 
