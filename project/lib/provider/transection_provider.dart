@@ -15,7 +15,7 @@ class TransectionProvider with ChangeNotifier{
     var db = TransectionDB(dbName: "transections.db");
     //บันทึกข้อมูล
     await db.InsertData(statement);
-    
+    print("addTransection");
     //ดึงข้อมูลมาแสดงผล
     transection = await db.loadAllData();
     //transection.insert(0,statement);

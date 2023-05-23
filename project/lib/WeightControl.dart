@@ -1,32 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/BigWidget1.dart';
 import 'package:mybasicapp/SmallWidget.dart';
-
+import 'package:mybasicapp/models/transections.dart';
+import 'package:mybasicapp/provider/transection_provider.dart';
+import 'package:provider/provider.dart';
 
 class WeightControl extends StatelessWidget {
-
   WeightControl({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) {
+          return TransectionProvider();
+        })
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage(
+          title: 'Flutter Demo Home Page',
+        ),
       ),
-       home: MyHomePage(title: 'Flutter Demo Home Page',),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-
   BigWidget1 Bwg = BigWidget1();
-  SmallWidget Swg1 = SmallWidget(total: 'รวม(กรัม)',data: 'ผลไม้',unit1: 'ผล',unit2: 'ชิ้น',);
-  SmallWidget Swg2 = SmallWidget(total: 'รวม(มล.)',data: 'นม',unit1: 'กล่อง',unit2: 'แก้ว',);
+  SmallWidget Swg1 = SmallWidget(
+    total: 'รวม(กรัม)',
+    data: 'ผลไม้',
+    unit1: 'ผล',
+    unit2: 'ชิ้น',
+  );
+  SmallWidget Swg2 = SmallWidget(
+    total: 'รวม(มล.)',
+    data: 'นม',
+    unit1: 'กล่อง',
+    unit2: 'แก้ว',
+  );
   //final DataCount Bwgdata = DataCount();
-  MyHomePage({Key? key,required String title,}) : super(key: key);
-  
+  MyHomePage({
+    Key? key,
+    required String title,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +85,9 @@ class MyHomePage extends StatelessWidget {
                     textAlign: TextAlign.start,
                   ),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 Bwg,
                 SizedBox(
                   height: 10,
@@ -82,7 +105,19 @@ class MyHomePage extends StatelessWidget {
                   child: Center(
                     child: ElevatedButton(
                       onPressed: () {
-                        
+                        //เตรียมข้อมูล
+                        transections statement = transections(
+                            dataMeat: Bwg.getRLdataMeat(),
+                            dataRice: Bwg.getRLdataRice(),
+                            dataVeget: Bwg.getRLdataVeget(),
+                            dataFruit: Swg1.getRLSmallWidget(),
+                            dataMilk: Swg2.getRLSmallWidget());
+
+                        //เรียก Porvider
+                        var provider = Provider.of<TransectionProvider>(context,
+                            listen: false);
+                        provider.addTransection(statement);
+
                         print(Bwg.getRLdataMeat());
                         print(Bwg.getRLdataRice());
                         print(Bwg.getRLdataVeget());
@@ -96,8 +131,7 @@ class MyHomePage extends StatelessWidget {
                         children: [
                           Text(
                             "Confirm",
-                            style:
-                                TextStyle(fontFamily: 'Twist', fontSize: 32),
+                            style: TextStyle(fontFamily: 'Twist', fontSize: 32),
                           ),
                         ],
                       ),

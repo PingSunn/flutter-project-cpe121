@@ -57,9 +57,11 @@ class FromScreen extends StatelessWidget {
 
                       //เตรียมข้อมูล
                       transections statement = transections(
-                          title: title,
-                          amount: double.parse(amount),
-                          date: DateTime.now());
+                          dataMeat: 0,
+                          dataRice: 0,
+                          dataVeget: 0,
+                          dataFruit: 0,
+                          dataMilk: 0);
 
                       //เรียก Porvider
                       var provider = Provider.of<TransectionProvider>(context,

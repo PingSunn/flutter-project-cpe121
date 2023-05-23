@@ -35,9 +35,11 @@ class TransectionDB {
 
     // json
     var keyID = store.add(db, {
-      "title": statement.title,
-      "amount": statement.amount,
-      "date": statement.date.toIso8601String(),
+      "dataMeat": statement.dataMeat,
+      "dataRice": statement.dataRice,
+      "dataVeget": statement.dataVeget,
+      "dataFruit": statement.dataFruit,
+      "dataMilk": statement.dataMilk,
     });
     db.close();
     return keyID;
@@ -51,10 +53,12 @@ class TransectionDB {
     List<transections> transectionList = [];
     for (var Record in snapshot) {
       transectionList.add(transections(
-          title: Record["title"].toString(),
-          amount: double.parse(Record["amount"].toString()),
-          date: DateTime.parse(Record["date"].toString())));
-          print(snapshot);
+          dataMeat: int.parse(Record["dataMeat"].toString()),
+          dataRice: int.parse(Record["dataRice"].toString()), 
+          dataVeget: int.parse(Record["dataVeget"].toString()), 
+          dataFruit: int.parse(Record["dataFruit"].toString()), 
+          dataMilk: int.parse(Record["dataMilk"].toString())));
+      print(snapshot);
     }
 
     return transectionList;

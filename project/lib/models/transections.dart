@@ -1,8 +1,10 @@
 // ignore: camel_case_types
 class transections{
-  String title;
-  double amount;
-  DateTime date;
+  int dataMeat;
+  int dataRice;
+  int dataVeget;
+  int dataFruit;
+  int dataMilk;
 
-  transections({required this.title,required this.amount,required this.date});
+  transections({required this.dataMeat,required this.dataRice,required this.dataVeget,required this.dataFruit,required this.dataMilk});
 }
