@@ -103,6 +103,11 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
           ),
+          actions: [
+            IconButton(onPressed: (){
+              Navigator.push(context,MaterialPageRoute(builder: (context) => History()));
+            }, icon: Icon(Icons.history))
+          ],
           flexibleSpace: FlexibleSpaceBar(
             title: Column(
               mainAxisAlignment: MainAxisAlignment.end,
