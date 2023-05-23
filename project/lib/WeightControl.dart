@@ -3,6 +3,7 @@ import 'package:mybasicapp/BigWidget1.dart';
 import 'package:mybasicapp/SmallWidget.dart';
 import 'package:mybasicapp/models/transections.dart';
 import 'package:mybasicapp/provider/transection_provider.dart';
+import 'package:mybasicapp/screen/history.dart';
 import 'package:provider/provider.dart';
 
 class WeightControl extends StatelessWidget {
@@ -64,14 +65,26 @@ class MyHomePage extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0),
-                  child: Text(
-                    "อาหารจานสุขภาพ",
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Twist',
-                        color: Colors.black),
-                    textAlign: TextAlign.center,
+                  child: Row(
+                    children: [
+                      Text(
+                        "อาหารจานสุขภาพ",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Twist',
+                            color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
+                      IconButton(
+              icon: Icon(Icons.history),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return History();
+                }));
+              },
+            )
+                    ],
                   ),
                 ),
                 Padding(

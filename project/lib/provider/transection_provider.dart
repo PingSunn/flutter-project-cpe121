@@ -10,7 +10,12 @@ class TransectionProvider with ChangeNotifier{
   List<transections> getTransection(){
     return transection;
   }
-
+  void initData() async{
+    var db = TransectionDB(dbName: "transections.db");
+    //ดึงข้อมูลมาแสดงผล
+    transection = await db.loadAllData();
+    notifyListeners();
+  }
   void addTransection(transections statement) async{
     var db = TransectionDB(dbName: "transections.db");
     //บันทึกข้อมูล
