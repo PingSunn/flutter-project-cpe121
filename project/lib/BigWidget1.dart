@@ -23,14 +23,15 @@ class BigWidget1 extends StatelessWidget {
     return Container(
       height: 460,
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 255, 255, 255),
-              Color.fromARGB(255, 236, 255, 174)
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+        color: Colors.white,
+          // gradient: LinearGradient(
+          //   colors: [
+          //     Color.fromARGB(255, 255, 255, 255),
+          //     Color.fromARGB(255, 236, 255, 174)
+          //   ],
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          // ),
           borderRadius: BorderRadius.circular(29),
           boxShadow: [BoxShadow(blurRadius: 20)]),
       child: Column(children: [
@@ -112,18 +113,18 @@ class BigWidget1 extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        ProgressbarState(),
-        // LinearPercentIndicator(
-        //                   padding: const EdgeInsets.symmetric(horizontal: 20),
-        //                   animation: true,
-        //                   animationDuration: 1000,
-        //                   lineHeight: 20.0,
-        //                   percent: getAllWidgetData(),//ใส่ค่าที่คำนวนออกมาได้ตรงนี้(เป็นทศนิยมนะ)
-        //                   center: Text(getAllWidgetData().toStringAsFixed(0)+"%"),//ค่าที่เขียนตรงหลอดpercent *อย่าลบบรรทัด ignore นะ ระวังติด error
-        //                   // ignore: deprecated_member_use
-        //                   linearStrokeCap: LinearStrokeCap.round,
-        //                   progressColor: Colors.green,
-        //                 ),
+        //ProgressbarState(),
+        LinearPercentIndicator(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          animation: true,
+                          animationDuration: 1000,
+                          lineHeight: 20.0,
+                          percent: getAllWidgetData(),//ใส่ค่าที่คำนวนออกมาได้ตรงนี้(เป็นทศนิยมนะ)
+                          center: Text(getAllWidgetData().toStringAsFixed(0)+"%"),//ค่าที่เขียนตรงหลอดpercent *อย่าลบบรรทัด ignore นะ ระวังติด error
+                          // ignore: deprecated_member_use
+                          linearStrokeCap: LinearStrokeCap.round,
+                          progressColor: Colors.green,
+                        ),
       ]),
     );
   }
