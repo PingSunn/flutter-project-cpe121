@@ -46,7 +46,7 @@ class _MyWidgetState extends State<CountIcon> {
             ),
           ),
           SizedBox(
-            width: 1,
+            width: 2,
           ),
           Text(
             num.toString(),
@@ -59,7 +59,7 @@ class _MyWidgetState extends State<CountIcon> {
             ),
           ),
           SizedBox(
-            width: 1,
+            width: 2,
           ),
           GestureDetector(
             onTap: (){

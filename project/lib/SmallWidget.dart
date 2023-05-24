@@ -19,7 +19,7 @@ class SmallWidget extends StatelessWidget {
   
 
     return Container(
-      height: 250,
+      height: 270,
       decoration: BoxDecoration(
         color: Colors.white,
         // gradient: LinearGradient(
@@ -27,7 +27,7 @@ class SmallWidget extends StatelessWidget {
         //       begin: Alignment.topLeft,
         //       end: Alignment.bottomRight,
         //     ),
-        borderRadius: BorderRadius.circular(29),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [BoxShadow(blurRadius: 20)]
 
       ),
@@ -48,9 +48,6 @@ class SmallWidget extends StatelessWidget {
             ],
           ),
         ),
-        //SizedBox(height: 50,),
-        RL,
-        SizedBox(height: 30,),
         Row(
           children: [
             SizedBox(width: 120,),
@@ -70,7 +67,9 @@ class SmallWidget extends StatelessWidget {
             ),)
           ],
         ),
-        SizedBox(height: 20,),
+        SizedBox(height: 30,),
+        RL,
+        SizedBox(height: 30,),
         LinearPercentIndicator(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           animation: true,

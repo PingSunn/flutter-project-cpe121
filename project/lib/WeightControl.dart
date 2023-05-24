@@ -37,18 +37,34 @@ class Weight extends StatelessWidget {
   SmallWidget Swg1 = SmallWidget(
     total: 'รวม(กรัม)',
     data: 'ผลไม้',
-    unit1: '   ชิ้น',//ขอลักไก่หน่อยละกัน ไม่รู้จะแก้ยังไงให้ตรงละ
-    unit2: '   ผล', 
-    asset1: Image.asset('asset/image/OnePieceOfApple.jpg',height: 100,width: 100,), 
-    asset2: Image.asset('asset/image/Apple.png',height: 100,width: 100,),//อย่าลบนะ
+    unit1: '   ชิ้น', //ขอลักไก่หน่อยละกัน ไม่รู้จะแก้ยังไงให้ตรงละ
+    unit2: '   ผล',
+    asset1: Image.asset(
+      'asset/image/OnePieceOfApple.jpg',
+      height: 100,
+      width: 100,
+    ),
+    asset2: Image.asset(
+      'asset/image/Apple.png',
+      height: 100,
+      width: 100,
+    ), //อย่าลบนะ
   );
   SmallWidget Swg2 = SmallWidget(
     total: 'รวม(มล.)',
     data: 'นม',
     unit1: 'แก้ว',
-    unit2: 'กล่อง', 
-    asset1: Image.asset('asset/image/glass of milk.png',height: 100,width: 100,), 
-    asset2: Image.asset('asset/image/Milk.png',height: 100,width: 100,),
+    unit2: 'กล่อง',
+    asset1: Image.asset(
+      'asset/image/glass of milk.png',
+      height: 100,
+      width: 100,
+    ),
+    asset2: Image.asset(
+      'asset/image/Milk.png',
+      height: 100,
+      width: 100,
+    ),
   );
   //final DataCount Bwgdata = DataCount();
   Weight({
@@ -94,7 +110,8 @@ class Weight extends StatelessWidget {
           backgroundColor: Color(0xffeeaeca),
           leading: IconButton(
             onPressed: () {
-              Navigator.push(context,MaterialPageRoute(builder: (context) => MainScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MainScreen()));
             },
             icon: Icon(
               Icons.arrow_back,
@@ -152,12 +169,12 @@ class Weight extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Twist',
                       shadows: [
-                      BoxShadow(
-                          color: Colors.black,
-                          offset: Offset(5, 5),
-                          spreadRadius: 10,
-                          blurRadius: 10)
-                    ],
+                        BoxShadow(
+                            color: Colors.black,
+                            offset: Offset(5, 5),
+                            spreadRadius: 10,
+                            blurRadius: 10)
+                      ],
                       color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
@@ -201,21 +218,29 @@ class Weight extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10.0),
-                  child: Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [Colors.green, Colors.blue],
+                      ),
+                    ),
                     child: ElevatedButton(
                       onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: const Text('บันทึกข้อมูลเรียบร้อย'),
-                            action: SnackBarAction(
-                              label: 'history',
-                              onPressed: (){
-                                Navigator.push(context,MaterialPageRoute(builder: (context) => History()));
-                              },
-                              ),
-                          )
-                        );
-
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: const Text('บันทึกข้อมูลเรียบร้อย'),
+                          action: SnackBarAction(
+                            label: 'history',
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => History()));
+                            },
+                          ),
+                        ));
                         //เตรียมข้อมูล
                         transections statement = transections(
                             dataMeat: Bwg.getRLdataMeat(),
@@ -224,7 +249,7 @@ class Weight extends StatelessWidget {
                             dataFruit: Swg1.getRLSmallWidget(),
                             dataMilk: Swg2.getRLSmallWidget());
 
-                        //เรียก Porvider
+                        //เรียก Provider
                         var provider = Provider.of<TransectionProvider>(context,
                             listen: false);
                         provider.addTransection(statement);
@@ -234,26 +259,30 @@ class Weight extends StatelessWidget {
                         print(Bwg.getRLdataVeget());
                         print(Swg1.getRLSmallWidget());
                         print(Swg2.getRLSmallWidget());
-
                         print("Confirm");
                       },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Confirm",
-                            style: TextStyle(fontFamily: 'Twist', fontSize: 32),
-                          ),
-                        ],
-                      ),
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green,
-                          foregroundColor: Colors.black,
-                          padding: EdgeInsets.symmetric(horizontal: 100),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          textStyle:
-                              TextStyle(fontSize: 30, fontFamily: 'Twist')),
+                        backgroundColor: Colors.green,
+                        foregroundColor: Colors.black,
+                        padding: EdgeInsets.symmetric(horizontal: 100),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
+                      child: Text(
+                        "Confirm",
+                        style: TextStyle(
+                          fontFamily: 'Twist',
+                          fontSize: 32,
+                          color: Colors.white,
+                          shadows: [
+                            BoxShadow(
+                                color: Colors.black,
+                                offset: Offset(5, 5),
+                                spreadRadius: 10,
+                                blurRadius: 10)
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 )

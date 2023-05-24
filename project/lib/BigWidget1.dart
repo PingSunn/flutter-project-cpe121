@@ -23,7 +23,7 @@ class BigWidget1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 460,
+      height: 400,
       decoration: BoxDecoration(
         color: Colors.white,
           // gradient: LinearGradient(
@@ -34,7 +34,7 @@ class BigWidget1 extends StatelessWidget {
           //   begin: Alignment.topLeft,
           //   end: Alignment.bottomRight,
           // ),
-          borderRadius: BorderRadius.circular(29),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: [BoxShadow(blurRadius: 20)]),
       child: Column(children: [
         Padding(
@@ -45,30 +45,16 @@ class BigWidget1 extends StatelessWidget {
               Image.asset(
                 'asset/image/Spoon.png',
                 height: 80,
-                width: 100,
+                width: 140,
               ),
               Image.asset(
-                'asset/image/Ladle.jpg',
+                'asset/image/WoodLadel.png',
                 height: 100,
-                width: 100,
+                width: 80,
               ),
             ],
           ),
-        ),
-        //SizedBox(height: 50,),
-        RLdataMeat,
-        SizedBox(
-          height: 50,
-        ),
-        RLdataRice,
-        SizedBox(
-          height: 50,
-        ),
-        RLdataVeget,
-        SizedBox(
-          height: 30,
-        ),
-        Row(
+        ),Row(
           children: [
             SizedBox(
               width: 120,
@@ -93,6 +79,20 @@ class BigWidget1 extends StatelessWidget {
             )
           ],
         ),
+        SizedBox(height: 30,),
+        RLdataMeat,
+        SizedBox(
+          height: 30,
+        ),
+        RLdataRice,
+        SizedBox(
+          height: 30,
+        ),
+        RLdataVeget,
+        SizedBox(
+          height: 30,
+        ),
+        
 
         // Expanded(child: ElevatedButton(
         //                 onPressed: () {
@@ -112,9 +112,6 @@ class BigWidget1 extends StatelessWidget {
         //                 ),
         //               ), ),
 
-        SizedBox(
-          height: 20,
-        ),
         //ProgressbarState(result: getAllWidgetData(),),
         LinearPercentIndicator(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
