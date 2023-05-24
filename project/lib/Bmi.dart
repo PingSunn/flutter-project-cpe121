@@ -155,6 +155,7 @@ class _WeightControlState extends State<WeightControl> {
                   ),
                   ElevatedButton(
                     onPressed: _calculate,
+                    style: ElevatedButton.styleFrom(backgroundColor: Color(0xff94bbe9)),
                     child: const Text('คำนวณ'),
                   ),
                   Text(
@@ -175,6 +176,7 @@ class _WeightControlState extends State<WeightControl> {
                   ),
                   ElevatedButton(
                     onPressed: _history,
+                    style: ElevatedButton.styleFrom(backgroundColor: Color(0xffeeaeca)),
                     child: const Text('ประวัติ'),
                   ),
                 ],
