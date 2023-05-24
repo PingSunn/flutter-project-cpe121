@@ -1,6 +1,6 @@
 import 'package:project/model/Mbmi.dart';
 import 'package:project/providers/bmi_provider.dart';
-import 'package:project/screens/history_screen.dart';
+import 'package:project/history_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -124,6 +124,7 @@ class _WeightControlState extends State<WeightControl> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
+          child: SingleChildScrollView(
         child: SizedBox(
           width: 320,
           child: Card(
@@ -184,7 +185,7 @@ class _WeightControlState extends State<WeightControl> {
             ),
           ),
         ),
-      ),
+      )),
     );
   }
 }
