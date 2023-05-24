@@ -204,6 +204,18 @@ class Weight extends StatelessWidget {
                   child: Center(
                     child: ElevatedButton(
                       onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: const Text('บันทึกข้อมูลเรียบร้อย'),
+                            action: SnackBarAction(
+                              label: 'history',
+                              onPressed: (){
+                                Navigator.push(context,MaterialPageRoute(builder: (context) => History()));
+                              },
+                              ),
+                          )
+                        );
+
                         //เตรียมข้อมูล
                         transections statement = transections(
                             dataMeat: Bwg.getRLdataMeat(),
