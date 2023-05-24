@@ -160,7 +160,7 @@ class _WeightControlState extends State<WeightControl> {
                   ),
                   Text(
                     _bmi == null ? '' : _bmi!.toStringAsFixed(2),
-                    style: const TextStyle(fontSize: 50),
+                    style: const TextStyle(fontSize: 40),
                     textAlign: TextAlign.center,
                   ),
                   Container(
