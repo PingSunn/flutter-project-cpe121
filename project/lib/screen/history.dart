@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mybasicapp/MainScreen.dart';
 import 'package:mybasicapp/WeightControl.dart';
 import 'package:mybasicapp/models/transections.dart';
 import 'package:mybasicapp/provider/transection_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class History extends StatelessWidget {
   const History({super.key});
@@ -46,7 +46,6 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    var time = DateTime.now();
     bool order = false;
     return Scaffold(
         appBar: AppBar(
@@ -121,7 +120,7 @@ class _ProfileState extends State<Profile> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
-                            'วันที่ ${time.day}/${time.month}/${(time.year) + 543} \nเวลา : ${time.hour}:${time.minute}:${time.second} น.',
+                            DateFormat("dd/MM/yyyy hh:mm:ss aaa ").format(data.date),
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),

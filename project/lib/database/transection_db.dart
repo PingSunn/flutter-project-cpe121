@@ -40,6 +40,7 @@ class TransectionDB {
       "dataVeget": statement.dataVeget,
       "dataFruit": statement.dataFruit,
       "dataMilk": statement.dataMilk,
+      "date": statement.date.toIso8601String(),
     });
     db.close();
     return keyID;
@@ -54,10 +55,11 @@ class TransectionDB {
     for (var Record in snapshot) {
       transectionList.add(transections(
           dataMeat: int.parse(Record["dataMeat"].toString()),
-          dataRice: int.parse(Record["dataRice"].toString()), 
-          dataVeget: int.parse(Record["dataVeget"].toString()), 
-          dataFruit: int.parse(Record["dataFruit"].toString()), 
-          dataMilk: int.parse(Record["dataMilk"].toString())));
+          dataRice: int.parse(Record["dataRice"].toString()),
+          dataVeget: int.parse(Record["dataVeget"].toString()),
+          dataFruit: int.parse(Record["dataFruit"].toString()),
+          dataMilk: int.parse(Record["dataMilk"].toString()),
+          date: DateTime.parse(Record["date"].toString())));
       print(snapshot);
     }
 
