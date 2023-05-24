@@ -43,12 +43,12 @@ class BigWidget1 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Image.asset(
-                'asset/image/1631549281278.png',
-                height: 100,
+                'asset/image/Spoon.png',
+                height: 80,
                 width: 100,
               ),
               Image.asset(
-                'asset/image/1631549281278.png',
+                'asset/image/Ladle.jpg',
                 height: 100,
                 width: 100,
               ),
@@ -74,14 +74,14 @@ class BigWidget1 extends StatelessWidget {
               width: 120,
             ),
             Text(
-              'ทัพพี',
+              'ช้อน',
               style: TextStyle(fontFamily: 'Twist'),
             ),
             SizedBox(
               width: 70,
             ),
             Text(
-              'ช้อน',
+              'ทัพพี',
               style: TextStyle(fontFamily: 'Twist'),
             ),
             SizedBox(

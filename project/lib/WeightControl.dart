@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/BigWidget1.dart';
+import 'package:mybasicapp/MainScreen.dart';
 import 'package:mybasicapp/SmallWidget.dart';
 import 'package:mybasicapp/models/transections.dart';
 import 'package:mybasicapp/provider/transection_provider.dart';
@@ -23,7 +24,7 @@ class WeightControl extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MyHomePage(
+        home: Weight(
           title: 'Flutter Demo Home Page',
         ),
       ),
@@ -31,22 +32,26 @@ class WeightControl extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class Weight extends StatelessWidget {
   BigWidget1 Bwg = BigWidget1();
   SmallWidget Swg1 = SmallWidget(
     total: 'รวม(กรัม)',
     data: 'ผลไม้',
-    unit1: 'ผล',
-    unit2: 'ชิ้น',
+    unit1: '   ชิ้น',//ขอลักไก่หน่อยละกัน ไม่รู้จะแก้ยังไงให้ตรงละ
+    unit2: '   ผล', 
+    asset1: Image.asset('asset/image/OnePieceOfApple.jpg',height: 100,width: 100,), 
+    asset2: Image.asset('asset/image/Apple.png',height: 100,width: 100,),//อย่าลบนะ
   );
   SmallWidget Swg2 = SmallWidget(
     total: 'รวม(มล.)',
     data: 'นม',
-    unit1: 'กล่อง',
-    unit2: 'แก้ว',
+    unit1: 'แก้ว',
+    unit2: 'กล่อง', 
+    asset1: Image.asset('asset/image/glass of milk.png',height: 100,width: 100,), 
+    asset2: Image.asset('asset/image/Milk.png',height: 100,width: 100,),
   );
   //final DataCount Bwgdata = DataCount();
-  MyHomePage({
+  Weight({
     Key? key,
     required String title,
   }) : super(key: key);
@@ -89,7 +94,7 @@ class MyHomePage extends StatelessWidget {
           backgroundColor: Color(0xffeeaeca),
           leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.push(context,MaterialPageRoute(builder: (context) => MainScreen()));
             },
             icon: Icon(
               Icons.arrow_back,
@@ -104,9 +109,22 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           actions: [
-            IconButton(onPressed: (){
-              Navigator.push(context,MaterialPageRoute(builder: (context) => History()));
-            }, icon: Icon(Icons.history))
+            IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => History()));
+                },
+                icon: Icon(
+                  Icons.history,
+                  size: 30,
+                  shadows: [
+                    BoxShadow(
+                        color: Colors.black,
+                        offset: Offset(5, 5),
+                        spreadRadius: 10,
+                        blurRadius: 10)
+                  ],
+                ))
           ],
           flexibleSpace: FlexibleSpaceBar(
             title: Column(
@@ -133,6 +151,13 @@ class MyHomePage extends StatelessWidget {
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Twist',
+                      shadows: [
+                      BoxShadow(
+                          color: Colors.black,
+                          offset: Offset(5, 5),
+                          spreadRadius: 10,
+                          blurRadius: 10)
+                    ],
                       color: Colors.white),
                   textAlign: TextAlign.center,
                 ),

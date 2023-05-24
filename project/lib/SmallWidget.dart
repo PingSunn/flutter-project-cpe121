@@ -5,10 +5,11 @@ import 'RowLine.dart';
 
 class SmallWidget extends StatelessWidget {
   final String data,total,unit1,unit2;
+  final Image asset1,asset2;
   DataCount RLsmall = DataCount();
   RowLine RL = RowLine(type1: '');
   int result = 0;
-  SmallWidget({Key? key,required this.data,required this.total,required this.unit1,required this.unit2}) : super(key: key);
+  SmallWidget({Key? key,required this.data,required this.total,required this.unit1,required this.unit2, required this.asset1, required this.asset2}) : super(key: key);
   
 
   @override
@@ -37,8 +38,12 @@ class SmallWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Image.asset('asset/image/1631549281278.png',height: 100,width: 100,),
-              Image.asset('asset/image/1631549281278.png',height: 100,width: 100,),
+              asset1,
+              asset2
+              // Image.asset(asset1,height: 100,width: 100,),
+              // Image.asset(asset1,height: 100,width: 100,),
+              // Image.asset('asset/image/OnePieceOfApple.jpg',height: 100,width: 100,),
+              // Image.asset('asset/image/Red_Apple.jpg',height: 100,width: 100,),
               //Image.asset('assets/image/chevron-left.png'),
             ],
           ),

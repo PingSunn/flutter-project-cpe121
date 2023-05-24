@@ -38,12 +38,10 @@ class _MyWidgetState extends State<CountIcon> {
               });
             },
             child: Container(
-              width: 20,
-              height: 20,
+              width: 25,
+              height: 25,
               child: Image.asset(
                 'asset/image/chevron-left.png',
-                width: 20,
-                height: 20,
               ),
             ),
           ),
@@ -73,12 +71,10 @@ class _MyWidgetState extends State<CountIcon> {
               
             },
             child: Container(
-              width: 20,
-              height: 20,
+              width: 25,
+              height: 25,
               child: Image.asset(
                 'asset/image/chevron-right.png',
-                width: 20,
-                height: 20,
               ),
               
             ),

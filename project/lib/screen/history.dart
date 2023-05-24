@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mybasicapp/MainScreen.dart';
+import 'package:mybasicapp/WeightControl.dart';
 import 'package:mybasicapp/models/transections.dart';
 import 'package:mybasicapp/provider/transection_provider.dart';
 import 'package:provider/provider.dart';
@@ -19,51 +21,119 @@ class History extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MyHomePage(title: "ประวัติ"),
+        home: const Profile(title: "ประวัติ"),
       ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class Profile extends StatefulWidget {
+  const Profile({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Profile> createState() => _ProfileState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ProfileState extends State<Profile> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    Provider.of<TransectionProvider>(context,listen: false).initData();
+    Provider.of<TransectionProvider>(context, listen: false).initData();
   }
+
   @override
   Widget build(BuildContext context) {
+    var time = DateTime.now();
+    bool order = false;
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.title),
+          title: Text(
+            widget.title,
+            style: TextStyle(
+              fontSize: 30,
+              fontFamily: 'Twist',
+              shadows: [
+                BoxShadow(
+                    color: Colors.black,
+                    offset: Offset(5, 5),
+                    spreadRadius: 10,
+                    blurRadius: 10)
+              ],
+            ),
+          ),
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [Color(0xffeeaeca), Color(0xff94bbe9)]),
+            ),
+          ),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Weight(
+                              title: '',
+                            )));
+              },
+              icon: Icon(Icons.arrow_back)),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  setState(() {
+                    order = !order;
+                  });
+                },
+                icon: Icon(Icons.restore))
+          ],
         ),
         body: Consumer(
           builder: (context, TransectionProvider provider, Widget? child) {
-            var count = provider.transection.length;//นับจำนวนข้อมูล
-            if (count<=0) {
-              return Center(child: Text("ไม่พบข้อมูล",style: TextStyle(fontSize: 35),),);
-            }
-            else{
+            var count = provider.transection.length; //นับจำนวนข้อมูล
+            if (count <= 0) {
+              return Center(
+                child: Text(
+                  "ไม่พบข้อมูล",
+                  style: TextStyle(fontSize: 35),
+                ),
+              );
+            } else {
               return ListView.builder(
+                reverse: order,
                 itemCount: count,
-                itemBuilder: (context,int index){
-                transections data = provider.transection[index];
+                itemBuilder: (context, int index) {
+                  transections data = provider.transection[index];
                   return Card(
-                    child: ListTile(title: Row(
-                      children: [
-                        Text("เนื้อ = ${data.dataMeat.toString()}"),
-                      ],
-                    )),
+                    elevation: 8,
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage:
+                            AssetImage('asset/image/clock.png'),
+                        radius: 30,
+                      ),
+                      title: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            'วันที่ ${time.day}/${time.month}/${(time.year) + 543} \nเวลา : ${time.hour}:${time.minute}:${time.second} น.',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Text("เนื้อ = ${data.dataMeat.toString()} กรัม"),
+                          Text("ข้าว = ${data.dataRice.toString()} กรัม"),
+                          Text("ผัก = ${data.dataVeget.toString()} กรัม"),
+                          Text("ผลไม้ = ${data.dataFruit.toString()} กรัม"),
+                          Text("นม = ${data.dataMilk.toString()} มิลลิลิตร"),
+                        ],
+                      ),
+                      dense: true,
+                    ),
                   );
                 },
                 // itemBuilder: (context, int index) {
@@ -82,9 +152,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 //     ),
                 //   );
                 // }
-                );
+              );
             }
-            
           },
         ));
   }
