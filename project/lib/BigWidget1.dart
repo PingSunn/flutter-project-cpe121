@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/RowLine.dart';
 import 'package:mybasicapp/models/dataBigWidget.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class BigWidget1 extends StatelessWidget {
   final RowLine RLdataMeat = RowLine(
@@ -20,12 +19,29 @@ class BigWidget1 extends StatelessWidget {
     super.key,
   });
 
+  Stream<String> TextOut() async* {
+    while (true) {
+      await Future.delayed(Duration(seconds: 1));
+      String textOut;
+      int Total = getRLdataMeat() + getRLdataRice() + getRLdataVeget();
+      if ((0.20 < getRLdataMeat() / Total && getRLdataMeat() / Total < 0.30) ||
+          (0.20 < getRLdataRice() / Total && getRLdataRice() / Total < 0.30) ||
+          (0.45 < getRLdataVeget() / Total && getRLdataVeget() / Total < 0.55)) {
+        textOut = "GOOD";
+      } else {
+        textOut = "BAD";
+      }
+      //print("going to push stream");
+      yield textOut;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 400,
       decoration: BoxDecoration(
-        color: Colors.white,
+          color: Colors.white,
           // gradient: LinearGradient(
           //   colors: [
           //     Color.fromARGB(255, 255, 255, 255),
@@ -54,7 +70,8 @@ class BigWidget1 extends StatelessWidget {
               ),
             ],
           ),
-        ),Row(
+        ),
+        Row(
           children: [
             SizedBox(
               width: 120,
@@ -79,7 +96,9 @@ class BigWidget1 extends StatelessWidget {
             )
           ],
         ),
-        SizedBox(height: 30,),
+        SizedBox(
+          height: 30,
+        ),
         RLdataMeat,
         SizedBox(
           height: 30,
@@ -92,7 +111,6 @@ class BigWidget1 extends StatelessWidget {
         SizedBox(
           height: 30,
         ),
-        
 
         // Expanded(child: ElevatedButton(
         //                 onPressed: () {
@@ -113,17 +131,12 @@ class BigWidget1 extends StatelessWidget {
         //               ), ),
 
         //ProgressbarState(result: getAllWidgetData(),),
-        LinearPercentIndicator(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          animation: true,
-                          animationDuration: 1000,
-                          lineHeight: 20.0,
-                          percent: getAllWidgetData(),//ใส่ค่าที่คำนวนออกมาได้ตรงนี้(เป็นทศนิยมนะ)
-                          center: Text(getAllWidgetData().toStringAsFixed(0)+"%"),//ค่าที่เขียนตรงหลอดpercent *อย่าลบบรรทัด ignore นะ ระวังติด error
-                          // ignore: deprecated_member_use
-                          linearStrokeCap: LinearStrokeCap.round,
-                          progressColor: Colors.green,
-                        ),
+        StreamBuilder<String>(
+          stream: TextOut(),
+          builder: (context, snapshot) {
+            return Text(snapshot.data as String);
+          }
+        ),
       ]),
     );
   }
@@ -148,92 +161,5 @@ class BigWidget1 extends StatelessWidget {
     return dataBwg;
   }
 
-  double getAllWidgetData() {
-    double result = (RLdataMeat.getdataLine() + RLdataRice.getdataLine() + RLdataVeget.getdataLine()) /1000;
-    return result;
-  }
 }
 
-class ProgressbarState extends StatefulWidget {
-  const ProgressbarState({super.key, required this.result});
-  final result;
-
-  @override
-  State<ProgressbarState> createState() => _ProgressbarStateState();
-}
-
-class _ProgressbarStateState extends State<ProgressbarState> {
-  double percentage = 0;
-  late Timer timer;
-
-  @override
-  void initState() {
-    super.initState();
-    startTimer();
-    percentage = widget.result;
-  }
-
-  void startTimer() {
-    const oneSec = const Duration(seconds: 1);
-    timer = Timer.periodic(oneSec, (timer) {
-      setState(() {
-        if (percentage > 0.4) {
-          timer.cancel();
-        } else {
-          percentage += 0.1;
-        }
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    timer.cancel();
-    super.dispose();
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        LinearPercentIndicator(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          animation: false,
-          animationDuration: 1000,
-          lineHeight: 20.0,
-          percent: percentage, //ใส่ค่าที่คำนวนออกมาได้ตรงนี้(เป็นทศนิยมนะ)
-          center: Text(
-              (percentage*100).toStringAsFixed(0)+"%"), //ค่าที่เขียนตรงหลอดpercent *อย่าลบบรรทัด ignore นะ ระวังติด error
-          // ignore: deprecated_member_use
-          linearStrokeCap: LinearStrokeCap.round,
-          progressColor: Colors.green,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    if(percentage <0.9){
-                      percentage += 0.1;
-                    }else{
-                      percentage == 1;
-                    }
-                  });
-                },
-                child: Text('Increase')),
-                SizedBox(width: 20,),
-                ElevatedButton(onPressed: (){
-                  setState(() {
-                    if(percentage > 0.1){
-                      percentage -= 0.1;
-                    }else{
-                      percentage == 0;
-                    }
-                  });
-                }, child: Text('Decrease'))
-          ],
-        )
-      ],
-    );
-  }
-}
