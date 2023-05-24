@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'HomeBox.dart';
-import 'WeightControl.dart';
+import 'Bmi.dart';
 import 'Diet.dart';
 import 'Sodium.dart';
 
@@ -49,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
                   );
                 },
                 child: HomeBox(
-                  "Weight control",
+                  "Body Mass Index",
                   "{STATUS BMI}",
                   Color(0xffeeaeca),
                 ),
