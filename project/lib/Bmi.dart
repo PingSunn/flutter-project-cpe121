@@ -1,63 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:project/model/Mbmi.dart';
 import 'package:project/providers/bmi_provider.dart';
 import 'package:project/history_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-Widget picturex() {
-  return Container(
-    width: 120.0,
-    height: 120.0,
-    child: Image.asset('assets/images/x.jpg'),
-  );
-}
-
-Widget picturet() {
-  return Container(
-    width: 120.0,
-    height: 120.0,
-    child: Image.asset('assets/images/t.jpg'),
-  );
-}
-
-Widget picturep() {
-  return Container(
-    width: 120.0,
-    height: 120.0,
-    child: Image.asset('assets/images/p.jpg'),
-  );
-}
-
-Widget pictureh() {
-  return Container(
-    width: 120.0,
-    height: 120.0,
-    child: Image.asset('assets/images/h.png'),
-  );
-}
-
-Widget picturef() {
-  return Container(
-    width: 120.0,
-    height: 120.0,
-    child: Image.asset('assets/images/f.jpg'),
-  );
-}
-
-class WeightControl extends StatefulWidget {
-  const WeightControl({super.key});
+class Bmi extends StatefulWidget {
+  const Bmi({Key? key}) : super(key: key);
 
   @override
-  State<WeightControl> createState() => _WeightControlState();
+  State<Bmi> createState() => _BmiState();
 }
 
-class _WeightControlState extends State<WeightControl> {
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<BmiProvider>(context, listen: false).initData();
-  }
-
+class _BmiState extends State<Bmi> {
   final _heightControl = TextEditingController();
   final _weightControl = TextEditingController();
 
@@ -68,9 +22,17 @@ class _WeightControlState extends State<WeightControl> {
   String _message = " ";
   Widget? pho;
   String __ = " ";
+
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<BmiProvider>(context, listen: false).initData();
+  }
+
   void _calculate() {
     final double? height = double.tryParse(_heightControl.value.text);
     final double? weight = double.tryParse(_weightControl.value.text);
+
     if (height == null || height <= 0 || weight == null || weight <= 0 || height >= 10) {
       setState(() {
         _bmi = null;
@@ -95,6 +57,7 @@ class _WeightControlState extends State<WeightControl> {
           pho = picturef();
         }
       });
+
       final nnbimControl = _bmi!.toStringAsFixed(2);
       final mmessControl = _message;
 
@@ -113,79 +76,148 @@ class _WeightControlState extends State<WeightControl> {
       _bmi = null;
       _message = " ";
       pho = null;
-
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return HistoryScreen();
-      }));
     });
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return HistoryScreen();
+    }));
   }
 
+  Widget picturex() {
+    return Container(
+      width: 120.0,
+      height: 120.0,
+      child: Image.asset('assets/images/x.jpg'),
+    );
+  }
+
+  Widget picturet() {
+    return Container(
+      width: 120.0,
+      height: 120.0,
+      child: Image.asset('assets/images/t.jpg'),
+    );
+  }
+
+  Widget picturep() {
+    return Container(
+      width: 120.0,
+      height: 120.0,
+      child: Image.asset('assets/images/p.jpg'),
+    );
+  }
+
+  Widget pictureh() {
+    return Container(
+      width: 120.0,
+      height: 120.0,
+      child: Image.asset('assets/images/h.png'),
+    );
+  }
+
+  Widget picturef() {
+    return Container(
+      width: 120.0,
+      height: 120.0,
+      child: Image.asset('assets/images/f.jpg'),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Text(
+            "Body Mass Index",
+            style: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold, fontFamily: 'Itim'),
+          ),
+          centerTitle: true,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: [
+                Color(0xffeeaeca),
+                Color(0xff94bbe9)
+              ]),
+            ),
+          ),
+          actions: <Widget>[
+            Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: GestureDetector(
+                  onTap: () {
+                    _history();
+                  },
+                  child: Icon(
+                    Icons.history,
+                    size: 26.0,
+                  ),
+                )),
+          ]),
       backgroundColor: Colors.white,
       body: Center(
-          child: SingleChildScrollView(
-        child: SizedBox(
-          width: 320,
-          child: Card(
-            color: Colors.white,
-            elevation: 10,
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    "BMI",
-                    textAlign: TextAlign.center,
-                  ),
-                  TextField(
-                    decoration: new InputDecoration(labelText: "น้ำหนัก(กิโลกรัม)"),
-                    keyboardType: TextInputType.number,
-                    controller: _weightControl,
-                  ),
-                  TextField(
-                    decoration: new InputDecoration(labelText: "ส่วนสูง(เมตร)"),
-                    keyboardType: TextInputType.number,
-                    controller: _heightControl,
-                  ),
-                  Text(
-                    __,
-                    style: const TextStyle(fontSize: 20),
-                    textAlign: TextAlign.center,
-                  ),
-                  ElevatedButton(
-                    onPressed: _calculate,
-                    style: ElevatedButton.styleFrom(backgroundColor: Color(0xff94bbe9)),
-                    child: const Text('คำนวณ'),
-                  ),
-                  Text(
-                    _bmi == null ? '' : _bmi!.toStringAsFixed(2),
-                    style: const TextStyle(fontSize: 40),
-                    textAlign: TextAlign.center,
-                  ),
-                  Container(
-                    child: pho,
-                  ),
-                  Text(
-                    _message,
-                    style: const TextStyle(fontSize: 20),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ElevatedButton(
-                    onPressed: _history,
-                    style: ElevatedButton.styleFrom(backgroundColor: Color(0xffeeaeca)),
-                    child: const Text('ประวัติ'),
-                  ),
-                ],
+        child: SingleChildScrollView(
+          child: SizedBox(
+            width: 320,
+            child: Card(
+              color: Colors.white,
+              elevation: 10,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "BMI",
+                      textAlign: TextAlign.center,
+                    ),
+                    TextField(
+                      decoration: InputDecoration(labelText: "น้ำหนัก(กิโลกรัม)"),
+                      keyboardType: TextInputType.number,
+                      controller: _weightControl,
+                    ),
+                    TextField(
+                      decoration: InputDecoration(labelText: "ส่วนสูง(เมตร)"),
+                      keyboardType: TextInputType.number,
+                      controller: _heightControl,
+                    ),
+                    Text(
+                      __,
+                      style: const TextStyle(fontSize: 20),
+                      textAlign: TextAlign.center,
+                    ),
+                    ElevatedButton(
+                      onPressed: _calculate,
+                      style: ElevatedButton.styleFrom(backgroundColor: const Color(0xff94bbe9)),
+                      child: const Text(
+                        'Calculate...',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                    Text(
+                      _bmi == null ? '' : _bmi!.toStringAsFixed(2),
+                      style: const TextStyle(fontSize: 40),
+                      textAlign: TextAlign.center,
+                    ),
+                    Container(
+                      width: 120.0,
+                      height: 120.0,
+                      child: pho,
+                    ),
+                    Text(
+                      _message,
+                      style: const TextStyle(fontSize: 20),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
         ),
-      )),
+      ),
     );
   }
 }

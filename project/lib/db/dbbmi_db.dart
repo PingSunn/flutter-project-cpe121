@@ -19,6 +19,23 @@ class DbBmi {
     return db;
   }
 
+  Future<String> getLatestMess() async {
+    var db = await openDatabase();
+    var store = intMapStoreFactory.store("expense");
+    var finder = Finder(sortOrders: [
+      SortOrder(Field.key, false)
+    ], limit: 1);
+    var recordSnapshots = await store.find(db, finder: finder);
+
+    if (recordSnapshots.isNotEmpty) {
+      var latestRecord = recordSnapshots.first;
+      var mess = latestRecord['mess'] as String;
+      return '$mess';
+    }
+
+    return '';
+  }
+
   Future<int> InsertData(Mbmi statement) async {
     var db = await this.openDatabase();
     var store = intMapStoreFactory.store("expense");

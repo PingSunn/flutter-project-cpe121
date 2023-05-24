@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: "My Title",
+          title: "HypnoCare",
           home: MainScreen(),
           theme: ThemeData(
               // Use the fontFamily property of the TextStyle object
