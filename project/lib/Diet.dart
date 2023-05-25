@@ -59,7 +59,7 @@ class Weight extends StatelessWidget {
     unit1: 'แก้ว',
     unit2: 'กล่อง',
     asset1: Image.asset(
-      'assets/images/glass of milk.png',
+      'assets/images/glass_of_milk.png',
       height: 100,
       width: 100,
     ),
@@ -176,7 +176,7 @@ class Weight extends StatelessWidget {
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                   child: Image.asset(
-                    'assets/images/healthy food.jpg',
+                    'assets/images/healthy_food.jpg',
                     fit: BoxFit.cover,
                   ),
                 ),
