@@ -88,7 +88,7 @@ flutter:
   fonts:
     - family: Twist
       fonts:
-        - asset: fonts/FC Twist Bold [Non-commercial].ttf
+        - asset: assets/fonts/FC Twist Bold [Non-commercial].ttf
         # - asset: fonts/Schyler-Italic.ttf
         #   style: italic
   #   - family: Trajan Pro
