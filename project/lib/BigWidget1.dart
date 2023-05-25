@@ -134,7 +134,7 @@ class BigWidget1 extends StatelessWidget {
         StreamBuilder<String>(
           stream: TextOut(),
           builder: (context, snapshot) {
-            return Text(snapshot.data as String);
+            return Text(snapshot.data??'');
           }
         ),
       ]),
