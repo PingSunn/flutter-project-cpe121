@@ -112,7 +112,7 @@ class _ProfileState extends State<Profile> {
                     child: ListTile(
                       leading: CircleAvatar(
                         backgroundImage:
-                            AssetImage('asset/image/clock.png'),
+                            AssetImage('assets/images/clock.png'),
                         radius: 30,
                       ),
                       title: Column(

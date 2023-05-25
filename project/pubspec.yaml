@@ -61,7 +61,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - asset/image/
+    - assets/images/
   # - asset/image/project/asset/image/Encyclopedia Of Science And Technology Poster Background Template.jpg
 
   # The following line ensures that the Material Icons font is

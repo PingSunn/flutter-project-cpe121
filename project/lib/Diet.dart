@@ -40,12 +40,12 @@ class Weight extends StatelessWidget {
     unit1: '   ชิ้น', //ขอลักไก่หน่อยละกัน ไม่รู้จะแก้ยังไงให้ตรงละ
     unit2: '   ผล',
     asset1: Image.asset(
-      'asset/image/OnePieceOfApple.jpg',
+      'assets/images/OnePieceOfApple.jpg',
       height: 100,
       width: 100,
     ),
     asset2: Image.asset(
-      'asset/image/Apple.png',
+      'assets/images/Apple.png',
       height: 100,
       width: 100,
     ), format1: 90, format2: 300, limit: 350, //อย่าลบนะ
@@ -56,12 +56,12 @@ class Weight extends StatelessWidget {
     unit1: 'แก้ว',
     unit2: 'กล่อง',
     asset1: Image.asset(
-      'asset/image/glass of milk.png',
+      'assets/images/glass of milk.png',
       height: 100,
       width: 100,
     ),
     asset2: Image.asset(
-      'asset/image/Milk.png',
+      'assets/images/Milk.png',
       height: 100,
       width: 100,
     ), format1: 200, format2: 250, limit: 1000,
@@ -188,7 +188,7 @@ class Weight extends StatelessWidget {
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                   child: Image.asset(
-                    'asset/image/healthy food.jpg',
+                    'assets/images/healthy food.jpg',
                     fit: BoxFit.cover,
                   ),
                 ),
