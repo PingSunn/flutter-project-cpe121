@@ -54,11 +54,11 @@ class TransectionDB {
     List<transections> transectionList = [];
     for (var Record in snapshot) {
       transectionList.add(transections(
-          dataMeat: int.parse(Record["dataMeat"].toString()),
-          dataRice: int.parse(Record["dataRice"].toString()),
-          dataVeget: int.parse(Record["dataVeget"].toString()),
-          dataFruit: int.parse(Record["dataFruit"].toString()),
-          dataMilk: int.parse(Record["dataMilk"].toString()),
+          dataMeat: double.parse(Record["dataMeat"].toString()),
+          dataRice: double.parse(Record["dataRice"].toString()),
+          dataVeget: double.parse(Record["dataVeget"].toString()),
+          dataFruit: double.parse(Record["dataFruit"].toString()),
+          dataMilk: double.parse(Record["dataMilk"].toString()),
           date: DateTime.parse(Record["date"].toString())));
       print(snapshot);
     }

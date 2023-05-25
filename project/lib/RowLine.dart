@@ -7,12 +7,13 @@ import 'countIcon.dart';
 class RowLine extends StatelessWidget {
   final DataCount datacount1 = DataCount();
   final DataCount datacount2 = DataCount();
-  int result = 0;
+  double result = 0;
   final String type1;
+  final double format1,format2;
 
-  RowLine({Key? key,required this.type1,}) : super(key: key);
+  RowLine({Key? key,required this.type1, required this.format1, required this.format2,}) : super(key: key);
 
-  Stream<int> TextData() async*{
+  Stream<double> TextData() async*{
     int data = 0;
     while(data <= 0){
       await Future.delayed(Duration(seconds: 0));
@@ -103,11 +104,17 @@ class RowLine extends StatelessWidget {
   }
   
 
-  int getdataLine(){
+  double getdataLine(){
     //print("getdataline");
-    int d1 = datacount1.data??=0;
-    int d2 = datacount2.data??=0;
-    result = (d1)*15+(d2)*60;
+    double d1 = datacount1.data??=0.0;
+    double d2 = datacount2.data??=0.0;
+    result = (d1)*format1 + (d2)*format2;
     return result;
+  }
+  double getdataLine1(){
+    return datacount1.data??=0;
+  }
+  double getdataLine2(){
+    return datacount2.data??=0;
   }
 }

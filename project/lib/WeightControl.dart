@@ -48,7 +48,7 @@ class Weight extends StatelessWidget {
       'asset/image/Apple.png',
       height: 100,
       width: 100,
-    ), //อย่าลบนะ
+    ), format1: 90, format2: 300, limit: 350, //อย่าลบนะ
   );
   SmallWidget Swg2 = SmallWidget(
     total: 'รวม(มล.)',
@@ -64,7 +64,7 @@ class Weight extends StatelessWidget {
       'asset/image/Milk.png',
       height: 100,
       width: 100,
-    ),
+    ), format1: 200, format2: 250, limit: 500,
   );
   //final DataCount Bwgdata = DataCount();
   Weight({
@@ -247,7 +247,8 @@ class Weight extends StatelessWidget {
                             dataRice: Bwg.getRLdataRice(),
                             dataVeget: Bwg.getRLdataVeget(),
                             dataFruit: Swg1.getRLSmallWidget(),
-                            dataMilk: Swg2.getRLSmallWidget(), date: DateTime.now());
+                            dataMilk: Swg2.getRLSmallWidget(), 
+                            date: DateTime.now());
 
                         //เรียก Provider
                         var provider = Provider.of<TransectionProvider>(context,

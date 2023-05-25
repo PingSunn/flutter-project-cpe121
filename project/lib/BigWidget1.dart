@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:ansi_styles/ansi_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/RowLine.dart';
@@ -7,13 +6,13 @@ import 'package:mybasicapp/models/dataBigWidget.dart';
 
 class BigWidget1 extends StatelessWidget {
   final RowLine RLdataMeat = RowLine(
-    type1: 'เนื้อสัตว์',
+    type1: 'เนื้อสัตว์', format1: 15, format2: 60,
   );
   final RowLine RLdataRice = RowLine(
-    type1: 'ข้าว',
+    type1: 'ข้าว',format1: 15, format2: 60,
   );
   final RowLine RLdataVeget = RowLine(
-    type1: 'ผัก',
+    type1: 'ผัก',format1: 15, format2: 60,
   );
 
   BigWidget1({
@@ -24,7 +23,7 @@ class BigWidget1 extends StatelessWidget {
     while (true) {
       await Future.delayed(Duration(seconds: 0));
       String textOut;
-      int Total = getRLdataMeat() + getRLdataRice() + getRLdataVeget();
+      double Total = getRLdataMeat() + getRLdataRice() + getRLdataVeget();
       if ((0.20 < getRLdataMeat() / Total && getRLdataMeat() / Total < 0.30) ||
           (0.20 < getRLdataRice() / Total && getRLdataRice() / Total < 0.30) ||
           (0.45 < getRLdataVeget() / Total && getRLdataVeget() / Total < 0.55)) {
@@ -146,15 +145,15 @@ class BigWidget1 extends StatelessWidget {
     );
   }
 
-  int getRLdataMeat() {
+  double getRLdataMeat() {
     return getBigWidgetdata().data1;
   }
 
-  int getRLdataRice() {
+  double getRLdataRice() {
     return getBigWidgetdata().data2;
   }
 
-  int getRLdataVeget() {
+  double getRLdataVeget() {
     return getBigWidgetdata().data3;
   }
 

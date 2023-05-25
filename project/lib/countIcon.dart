@@ -33,7 +33,7 @@ class _MyWidgetState extends State<CountIcon> {
               setState(() {
                 if(num>0){
                   num-=1;
-                  widget.datacount.SetData(num);                  
+                  widget.datacount.SetData(num.toDouble());                  
                 }
               });
             },
@@ -65,7 +65,7 @@ class _MyWidgetState extends State<CountIcon> {
             onTap: (){
               setState(() {
                 num+=1;
-                widget.datacount.SetData(num);
+                widget.datacount.SetData(num.toDouble());
                 print(widget.datacount.data);
               });
               
@@ -83,7 +83,7 @@ class _MyWidgetState extends State<CountIcon> {
       ),
     );
   }
-  int getDataIcon(){
+  double getDataIcon(){
     return widget.datacount.data??=0;
   }
 }

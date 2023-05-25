@@ -1,10 +1,10 @@
 class DataCount {
-  int? data;
-  Function(int?)? onDataReturned;
+  double? data;
+  Function(double?)? onDataReturned;
 
   DataCount({this.data, this.onDataReturned});
 
-  void SetData(int newdata){
+  void SetData(double newdata){
     print("Setdata");
     data = newdata;
     onDataReturned?.call(data);

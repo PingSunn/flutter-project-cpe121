@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/provider/dataCountIcon.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'RowLine.dart';
 
 class SmallWidget extends StatelessWidget {
   final String data, total, unit1, unit2;
   final Image asset1, asset2;
+  final double format1,format2,limit;
   DataCount RLsmall = DataCount();
-  RowLine RL = RowLine(type1: '');
+  RowLine RL = RowLine(type1: '', format1: 2, format2: 5,);
   int result = 0;
   SmallWidget(
       {Key? key,
@@ -16,14 +16,14 @@ class SmallWidget extends StatelessWidget {
       required this.unit1,
       required this.unit2,
       required this.asset1,
-      required this.asset2})
+      required this.asset2, required this.format1, required this.format2, required this.limit})
       : super(key: key);
 
   Stream<double> percent() async* {
     double percent = 0.00;
     while (true) {
       await Future.delayed(Duration(seconds: 0));
-      percent = RL.getdataLine() / 1000;
+      percent = RL.getdataLine() / limit;
       //print("going to push stream");
       yield percent;
     }
@@ -45,7 +45,7 @@ class SmallWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RL = RowLine(type1: data);
+    RL = RowLine(type1: data, format1: format1, format2: format2,);
 
     return Container(
       height: 270,
@@ -117,7 +117,8 @@ class SmallWidget extends StatelessWidget {
 
         // Expanded(child: ElevatedButton(
         //                  onPressed: () {
-        //                   print(getRLSmallWidget());
+        //                   print(RL.getdataLine1());
+        //                   print(RL.getdataLine2());
         //                   print("Confirm");
         //                  },
         //                 child: Row(
@@ -129,11 +130,12 @@ class SmallWidget extends StatelessWidget {
         //                   ],
         //                  ),
         //                ), ),
+      
       ]),
     );
   }
 
-  int getRLSmallWidget() {
+  double getRLSmallWidget() {
     //print("RLsmall");
     //print(RL.getdataLine());
     RLsmall.SetData(RL.getdataLine());
