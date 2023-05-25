@@ -47,10 +47,14 @@ class TransectionDB {
   }
 
   //ดึงข้อมูล
+
+  //ใหม่ => เก่า false มาก => น้อย
+  //เก่า => ใหม่ true น้อย => มาก
   Future<List<transections>> loadAllData() async {
     var db = await openDatabase();
     var store = intMapStoreFactory.store("expense");
-    var snapshot = await store.find(db);
+    var snapshot = await store.find(db,
+        finder: Finder(sortOrders: [SortOrder(Field.key, false)]));
     List<transections> transectionList = [];
     for (var Record in snapshot) {
       transectionList.add(transections(
