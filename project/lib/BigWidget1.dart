@@ -2,9 +2,9 @@ import 'dart:async';
 import 'package:ansi_styles/ansi_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:project/RowLine.dart';
-import 'package:project/models/dataBigWidget.dart';
 
 class BigWidget1 extends StatelessWidget {
+  String textOut = '';
   final RowLine RLdataMeat = RowLine(
     type1: 'เนื้อสัตว์',
     format1: 15,
@@ -20,7 +20,7 @@ class BigWidget1 extends StatelessWidget {
     format1: 15,
     format2: 60,
   );
-
+  
   BigWidget1({
     super.key,
   });
@@ -28,7 +28,7 @@ class BigWidget1 extends StatelessWidget {
   Stream<String> TextOut() async* {
     while (true) {
       await Future.delayed(Duration(seconds: 0));
-      String textOut;
+      
       double Total = getRLdataMeat() + getRLdataRice() + getRLdataVeget();
       if ((0.20 < getRLdataMeat() / Total && getRLdataMeat() / Total < 0.30) && (0.20 < getRLdataRice() / Total && getRLdataRice() / Total < 0.30) && (0.45 < getRLdataVeget() / Total && getRLdataVeget() / Total < 0.55)) {
         textOut = AnsiStyles.green('GOOD');
@@ -88,7 +88,7 @@ class BigWidget1 extends StatelessWidget {
               style: TextStyle(fontFamily: 'Twist'),
             ),
             SizedBox(
-              width: 70,
+              width: 50,
             ),
             Text(
               'ทัพพี',
@@ -153,19 +153,18 @@ class BigWidget1 extends StatelessWidget {
   }
 
   double getRLdataMeat() {
-    return getBigWidgetdata().data1;
+    return RLdataMeat.getdataLine();
   }
 
   double getRLdataRice() {
-    return getBigWidgetdata().data2;
+    return RLdataRice.getdataLine();
   }
 
   double getRLdataVeget() {
-    return getBigWidgetdata().data3;
+    return RLdataVeget.getdataLine();
+  }
+  String getStatusBigWidget(){
+    return textOut;
   }
 
-  dataBigWidget getBigWidgetdata() {
-    dataBigWidget dataBwg = dataBigWidget(data1: RLdataMeat.getdataLine(), data2: RLdataRice.getdataLine(), data3: RLdataVeget.getdataLine());
-    return dataBwg;
-  }
 }

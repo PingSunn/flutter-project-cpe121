@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/database/transection_db.dart';
 import 'HomeBox.dart';
 import 'Bmi.dart';
 import 'Diet.dart';
@@ -12,7 +13,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  String latestMess = '';
+  String latestMess = '',statusDiet = '';
 
   @override
   void initState() {
@@ -23,7 +24,9 @@ class _MainScreenState extends State<MainScreen> {
 
   Future<void> initializeData() async {
     DbBmi db = DbBmi(dbnum: 'mombi.db');
+    TransectionDB diet = TransectionDB(dbName: "Dietdb.db");
     latestMess = await db.getLatestMess();
+    statusDiet = await diet.getStatusDiet();
     setState(() {});
   }
 
@@ -78,7 +81,7 @@ class _MainScreenState extends State<MainScreen> {
                 );
               },
               child: Container(
-                child: HomeBox("Diet", "0", Color(0xff94bbe9)),
+                child: HomeBox("Diet", statusDiet, Color(0xff94bbe9)),
               ),
             ),
             SizedBox(

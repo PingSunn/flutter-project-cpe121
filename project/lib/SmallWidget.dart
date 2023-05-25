@@ -13,11 +13,10 @@ class SmallWidget extends StatelessWidget {
     format1: 2,
     format2: 5,
   );
-  int result = 0;
+  double percentOut = 0.00;
   SmallWidget({Key? key, required this.data, required this.total, required this.unit1, required this.unit2, required this.asset1, required this.asset2, required this.format1, required this.format2, required this.limit}) : super(key: key);
 
   Stream<double> percent() async* {
-    double percentOut = 0.00;
     double percentIn = 0.00;
     while (true) {
       await Future.delayed(Duration(seconds: 1));
@@ -78,14 +77,14 @@ class SmallWidget extends StatelessWidget {
         Row(
           children: [
             SizedBox(
-              width: 120,
+              width: 110,
             ),
             Text(
               unit1,
               style: TextStyle(fontFamily: 'Twist'),
             ),
             SizedBox(
-              width: 60,
+              width: 50,
             ),
             Text(
               unit2,
