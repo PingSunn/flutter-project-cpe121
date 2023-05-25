@@ -22,10 +22,24 @@ class SmallWidget extends StatelessWidget {
   Stream<double> percent() async* {
     double percent = 0.00;
     while (true) {
-      await Future.delayed(Duration(seconds: 1));
+      await Future.delayed(Duration(seconds: 0));
       percent = RL.getdataLine() / 1000;
       //print("going to push stream");
       yield percent;
+    }
+  }
+
+  double _getProgressValue(int progress) {
+    return progress / 100; // Convert progress to a value between 0.0 and 1.0
+  }
+
+  Color _getProgressColor(int progress) {
+    if (progress <= 50) {
+      return Colors.green;
+    } else if (progress <= 100) {
+      return Colors.yellow;
+    } else {
+      return Colors.red;
     }
   }
 
@@ -49,15 +63,7 @@ class SmallWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              asset1,
-              asset2
-              // Image.asset(asset1,height: 100,width: 100,),
-              // Image.asset(asset1,height: 100,width: 100,),
-              // Image.asset('asset/image/OnePieceOfApple.jpg',height: 100,width: 100,),
-              // Image.asset('asset/image/Red_Apple.jpg',height: 100,width: 100,),
-              //Image.asset('assets/image/chevron-left.png'),
-            ],
+            children: [asset1, asset2],
           ),
         ),
         Row(
@@ -97,16 +103,11 @@ class SmallWidget extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               double percent = snapshot.data as double;
-              return LinearPercentIndicator(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                animation: true,
-                animationDuration: 1000,
-                lineHeight: 20.0,
-                percent: percent, // Use snapshot.data here
-                center: Text(percent.toString()),
-                // ignore: deprecated_member_use
-                linearStrokeCap: LinearStrokeCap.round,
-                progressColor: Colors.green,
+              return LinearProgressIndicator(
+                minHeight: 20.0,
+                value: percent, // Use snapshot.data here
+                backgroundColor: Colors.grey[300],
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
               );
             } else {
               return CircularProgressIndicator();

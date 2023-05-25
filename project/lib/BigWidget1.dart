@@ -1,5 +1,6 @@
 import 'dart:async';
-
+import 'dart:io';
+import 'package:ansi_styles/ansi_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/RowLine.dart';
 import 'package:mybasicapp/models/dataBigWidget.dart';
@@ -21,15 +22,15 @@ class BigWidget1 extends StatelessWidget {
 
   Stream<String> TextOut() async* {
     while (true) {
-      await Future.delayed(Duration(seconds: 1));
+      await Future.delayed(Duration(seconds: 0));
       String textOut;
       int Total = getRLdataMeat() + getRLdataRice() + getRLdataVeget();
       if ((0.20 < getRLdataMeat() / Total && getRLdataMeat() / Total < 0.30) ||
           (0.20 < getRLdataRice() / Total && getRLdataRice() / Total < 0.30) ||
           (0.45 < getRLdataVeget() / Total && getRLdataVeget() / Total < 0.55)) {
-        textOut = "GOOD";
+        textOut = AnsiStyles.green('GOOD');
       } else {
-        textOut = "BAD";
+        textOut = AnsiStyles.red('BAD');;
       }
       //print("going to push stream");
       yield textOut;
@@ -132,11 +133,15 @@ class BigWidget1 extends StatelessWidget {
 
         //ProgressbarState(result: getAllWidgetData(),),
         StreamBuilder<String>(
-          stream: TextOut(),
-          builder: (context, snapshot) {
-            return Text(snapshot.data??'');
-          }
-        ),
+            stream: TextOut(),
+            builder: (context, snapshot) {
+              final text = snapshot.data ?? '';
+              final color = (text == 'GOOD') ? Colors.green : Colors.red;
+              return Text(
+                text,
+                style: TextStyle(color: color),
+              );
+            }),
       ]),
     );
   }
@@ -160,6 +165,4 @@ class BigWidget1 extends StatelessWidget {
         data3: RLdataVeget.getdataLine());
     return dataBwg;
   }
-
 }
-
