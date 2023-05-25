@@ -41,7 +41,7 @@ class _MyWidgetState extends State<CountIcon> {
               width: 25,
               height: 25,
               child: Image.asset(
-                'asset/image/chevron-left.png',
+                'assets/images/chevron-left.png',
               ),
             ),
           ),
@@ -77,7 +77,7 @@ class _MyWidgetState extends State<CountIcon> {
               width: 25,
               height: 25,
               child: Image.asset(
-                'asset/image/chevron-right.png',
+                'assets/images/chevron-right.png',
               ),
             ),
           ),

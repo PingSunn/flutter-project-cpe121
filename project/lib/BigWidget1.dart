@@ -66,12 +66,12 @@ class BigWidget1 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Image.asset(
-                'asset/image/Spoon.png',
+                'assets/images/Spoon.png',
                 height: 80,
                 width: 140,
               ),
               Image.asset(
-                'asset/image/WoodLadel.png',
+                'assets/images/WoodLadel.png',
                 height: 100,
                 width: 80,
               ),
