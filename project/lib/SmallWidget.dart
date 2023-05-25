@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mybasicapp/provider/dataCountIcon.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'RowLine.dart';
 
 class SmallWidget extends StatelessWidget {
@@ -20,12 +21,19 @@ class SmallWidget extends StatelessWidget {
       : super(key: key);
 
   Stream<double> percent() async* {
-    double percent = 0.00;
+    double percentOut = 0.00;
+    double percentIn = 0.00;
     while (true) {
       await Future.delayed(Duration(seconds: 0));
-      percent = RL.getdataLine() / limit;
+      percentIn = RL.getdataLine() / limit;
+      if(percentIn < 1){
+        percentOut = percentIn;
+      }
+      else{
+        percentOut = 1;
+      }
       //print("going to push stream");
-      yield percent;
+      yield percentOut;
     }
   }
 
@@ -104,8 +112,9 @@ class SmallWidget extends StatelessWidget {
                 animation: false,
                 animationDuration: 1000,
                 lineHeight: 20.0,
-                percent: percent*3, // Use snapshot.data here
-                center: Text((percent * 300).toStringAsFixed(0) + " %"),
+                percent: percent, // Use snapshot.data here
+                center: Text((percent * 100).toStringAsFixed(0) + " %"),
+                // ignore: deprecated_member_use
                 linearStrokeCap: LinearStrokeCap.round,
                 progressColor: _getProgressColor(percent*3),
               );

@@ -48,7 +48,7 @@ class Weight extends StatelessWidget {
       'asset/image/Apple.png',
       height: 100,
       width: 100,
-    ), format1: 90, format2: 300, limit: 350, //อย่าลบนะ
+    ), format1: 90, format2: 300, limit: 1000, //อย่าลบนะ
   );
   SmallWidget Swg2 = SmallWidget(
     total: 'รวม(มล.)',
@@ -64,7 +64,7 @@ class Weight extends StatelessWidget {
       'asset/image/Milk.png',
       height: 100,
       width: 100,
-    ), format1: 200, format2: 250, limit: 500,
+    ), format1: 200, format2: 250, limit: 1000,
   );
   //final DataCount Bwgdata = DataCount();
   Weight({
