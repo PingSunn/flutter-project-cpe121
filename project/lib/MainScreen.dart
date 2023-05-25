@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'HomeBox.dart';
-import 'WeightControl.dart';
 import 'Diet.dart';
 import 'Sodium.dart';
 
@@ -44,7 +43,7 @@ class _MainScreenState extends State<MainScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => WeightControl()),
+                    MaterialPageRoute(builder: (context) => Sodium()),
                   );
                 },
                 child: HomeBox(

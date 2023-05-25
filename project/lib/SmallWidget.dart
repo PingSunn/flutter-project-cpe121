@@ -24,7 +24,7 @@ class SmallWidget extends StatelessWidget {
     double percentOut = 0.00;
     double percentIn = 0.00;
     while (true) {
-      await Future.delayed(Duration(seconds: 0));
+      await Future.delayed(Duration(seconds: 1));
       percentIn = RL.getdataLine() / limit;
       if(percentIn < 1){
         percentOut = percentIn;
@@ -38,12 +38,13 @@ class SmallWidget extends StatelessWidget {
   }
 
   Color _getProgressColor(double percent) {
-    if (percent <= 0.3) {
+    if (0.4 >= percent) {
       return Colors.red;
-    } else if (percent <= 0.5) {
-      return Colors.green;
+    } else if (0.5 <= percent && percent<= 0.75) {
+      return Colors.yellow;
     } else {
-      return Colors.red;
+      print("Percent = "+percent.toString());
+      return Colors.green;
     }
   }
 
@@ -116,7 +117,7 @@ class SmallWidget extends StatelessWidget {
                 center: Text((percent * 100).toStringAsFixed(0) + " %"),
                 // ignore: deprecated_member_use
                 linearStrokeCap: LinearStrokeCap.round,
-                progressColor: _getProgressColor(percent*3),
+                progressColor: _getProgressColor(percent),
               );
             } else {
               return CircularProgressIndicator();

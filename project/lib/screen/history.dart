@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mybasicapp/WeightControl.dart';
+import 'package:mybasicapp/Diet.dart';
 import 'package:mybasicapp/models/transections.dart';
 import 'package:mybasicapp/provider/transection_provider.dart';
 import 'package:provider/provider.dart';

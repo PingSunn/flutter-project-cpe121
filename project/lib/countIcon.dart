@@ -64,7 +64,11 @@ class _MyWidgetState extends State<CountIcon> {
           GestureDetector(
             onTap: (){
               setState(() {
-                num+=1;
+                if(num<9){
+                  num+=1;
+                }else{
+                  num == 9;
+                }
                 widget.datacount.SetData(num.toDouble());
                 print(widget.datacount.data);
               });
