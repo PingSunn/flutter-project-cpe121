@@ -24,8 +24,8 @@ class BigWidget1 extends StatelessWidget {
       await Future.delayed(Duration(seconds: 0));
       String textOut;
       double Total = getRLdataMeat() + getRLdataRice() + getRLdataVeget();
-      if ((0.20 < getRLdataMeat() / Total && getRLdataMeat() / Total < 0.30) ||
-          (0.20 < getRLdataRice() / Total && getRLdataRice() / Total < 0.30) ||
+      if ((0.20 < getRLdataMeat() / Total && getRLdataMeat() / Total < 0.30) &&
+          (0.20 < getRLdataRice() / Total && getRLdataRice() / Total < 0.30) &&
           (0.45 < getRLdataVeget() / Total && getRLdataVeget() / Total < 0.55)) {
         textOut = AnsiStyles.green('GOOD');
       } else {

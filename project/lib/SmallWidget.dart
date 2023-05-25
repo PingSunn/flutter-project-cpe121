@@ -29,15 +29,11 @@ class SmallWidget extends StatelessWidget {
     }
   }
 
-  double _getProgressValue(int progress) {
-    return progress / 100; // Convert progress to a value between 0.0 and 1.0
-  }
-
-  Color _getProgressColor(int progress) {
-    if (progress <= 50) {
+  Color _getProgressColor(double percent) {
+    if (percent <= 0.3) {
+      return Colors.red;
+    } else if (percent <= 0.5) {
       return Colors.green;
-    } else if (progress <= 100) {
-      return Colors.yellow;
     } else {
       return Colors.red;
     }
@@ -103,11 +99,15 @@ class SmallWidget extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               double percent = snapshot.data as double;
-              return LinearProgressIndicator(
-                minHeight: 20.0,
-                value: percent, // Use snapshot.data here
-                backgroundColor: Colors.grey[300],
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+              return LinearPercentIndicator(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                animation: false,
+                animationDuration: 1000,
+                lineHeight: 20.0,
+                percent: percent*3, // Use snapshot.data here
+                center: Text((percent * 300).toStringAsFixed(0) + " %"),
+                linearStrokeCap: LinearStrokeCap.round,
+                progressColor: _getProgressColor(percent*3),
               );
             } else {
               return CircularProgressIndicator();
@@ -142,3 +142,14 @@ class SmallWidget extends StatelessWidget {
     return RLsmall.data ??= 0;
   }
 }
+
+/*สูตร 
+ผลไม้ 1 ชิ้น 90 g ; เทียบกับน้ำหนักเฉลี่ยของแอปเปิ้ล 1 ชิ้น
+ผลไม้ 1 ผล 300 g ; เทียบกับน้ำหนักเฉลี่ยของแอปเปิล 1 ผล
+ควรกิน ไม่เกิน 350 g
+ไม่กินไม่เป็นไร ไม่ต้องใส่แดง
+นม 1 แก้ว 200 ml
+นม 1 กล่อง 250 ml 
+ควรกิน 3-4 แก้วต่อวัน ; 1000 >= milk >= 500
+8วรกินให้มากกว่า 2 แก้วต่อวันในวัยผู้ใหญ่
+*/
