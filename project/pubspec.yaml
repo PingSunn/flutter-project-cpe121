@@ -40,7 +40,9 @@ dependencies:
   sembast: ^3.4.4
   path_provider: ^2.0.15
   path: ^1.8.2
-  flutter_easyloading: ^3.0.3 #Loader
+  ansi_styles: ^0.3.2+1
+  percent_indicator: ^4.2.3
+  animated_background: ^2.0.0
   
 
 dev_dependencies:
@@ -82,6 +84,16 @@ flutter:
     - assets/images/p.jpg
     - assets/images/h.png
     - assets/images/f.jpg
+    - assets/images/Apple.png
+    - assets/images/chevron-left.png
+    - assets/images/chevron-right.png
+    - assets/images/clock.png
+    - assets/images/glass_of_milk.png
+    - assets/images/healthy_food.jpg
+    - assets/images/Milk.png
+    - assets/images/OnePieceOfApple.jpg
+    - assets/images/Spoon.png
+    - assets/images/WoodLadel.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -103,6 +115,9 @@ flutter:
     - family: Itim
       fonts:
         - asset: assets/fonts/Itim-Regular.ttf
+    - family: Twist
+      fonts:
+        - asset: assets/fonts/FC Twist Bold [Non-commercial].ttf
 
     # - family: Trajan Pro
     #   fonts:
