@@ -247,7 +247,8 @@ class Weight extends StatelessWidget {
                             dataRice: Bwg.getRLdataRice(),
                             dataVeget: Bwg.getRLdataVeget(),
                             dataFruit: Swg1.getRLSmallWidget(),
-                            dataMilk: Swg2.getRLSmallWidget(), date: DateTime.now());
+                            dataMilk: Swg2.getRLSmallWidget(), 
+                            date: DateTime.now());
 
                         //เรียก Provider
                         var provider = Provider.of<TransectionProvider>(context,

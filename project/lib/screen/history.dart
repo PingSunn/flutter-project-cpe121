@@ -81,15 +81,15 @@ class _ProfileState extends State<Profile> {
                             )));
               },
               icon: Icon(Icons.arrow_back)),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  setState(() {
-                    order = !order;
-                  });
-                },
-                icon: Icon(Icons.restore))
-          ],
+          // actions: [
+          //   IconButton(
+          //       onPressed: () {
+          //         setState(() {
+          //           order = !order;
+          //         });
+          //       },
+          //       icon: Icon(Icons.restore))
+          // ],
         ),
         body: Consumer(
           builder: (context, TransectionProvider provider, Widget? child) {
@@ -103,7 +103,7 @@ class _ProfileState extends State<Profile> {
               );
             } else {
               return ListView.builder(
-                reverse: order,
+                reverse: false,
                 itemCount: count,
                 itemBuilder: (context, int index) {
                   transections data = provider.transection[index];
