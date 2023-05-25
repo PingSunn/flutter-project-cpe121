@@ -10,14 +10,14 @@ class TransectionProvider with ChangeNotifier {
   }
 
   void initData() async {
-    var db = TransectionDB(dbName: "transections.db");
+    var db = TransectionDB(dbName: "Dietdb.db");
     //ดึงข้อมูลมาแสดงผล
     transection = await db.loadAllData();
     notifyListeners();
   }
 
   void addTransection(transections statement) async {
-    var db = TransectionDB(dbName: "transections.db");
+    var db = TransectionDB(dbName: "Dietdb.db");
     //บันทึกข้อมูล
     await db.InsertData(statement);
     print("addTransection");

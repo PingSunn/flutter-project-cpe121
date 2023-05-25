@@ -5,6 +5,7 @@ class transections {
   double dataVeget;
   double dataFruit;
   double dataMilk;
+  String status;
   DateTime date;
 
   transections(
@@ -13,5 +14,6 @@ class transections {
       required this.dataVeget,
       required this.dataFruit,
       required this.dataMilk,
-      required this.date});
+      required this.date,
+      required this.status});
 }

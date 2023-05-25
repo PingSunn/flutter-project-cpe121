@@ -38,7 +38,7 @@ class _MyWidgetState extends State<CountIcon> {
               });
             },
             child: Container(
-              width: 25,
+              width: 23,
               height: 25,
               child: Image.asset(
                 'assets/images/chevron-left.png',
@@ -46,7 +46,7 @@ class _MyWidgetState extends State<CountIcon> {
             ),
           ),
           SizedBox(
-            width: 2,
+            width: 0,
           ),
           Text(
             num.toString(),
@@ -59,7 +59,7 @@ class _MyWidgetState extends State<CountIcon> {
             ),
           ),
           SizedBox(
-            width: 2,
+            width: 0,
           ),
           GestureDetector(
             onTap: () {
@@ -74,7 +74,7 @@ class _MyWidgetState extends State<CountIcon> {
               });
             },
             child: Container(
-              width: 25,
+              width: 23,
               height: 25,
               child: Image.asset(
                 'assets/images/chevron-right.png',

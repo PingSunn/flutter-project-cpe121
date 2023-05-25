@@ -25,6 +25,22 @@ class TransectionDB {
     Database db = await dbFactory.openDatabase(dbLocation);
     return db;
   }
+    Future<String> getStatusDiet() async {
+    var db = await openDatabase();
+    var store = intMapStoreFactory.store("expense");
+    var finder = Finder(sortOrders: [
+      SortOrder(Field.key, false)
+    ], limit: 1);
+    var recordSnapshots = await store.find(db, finder: finder);
+
+    if (recordSnapshots.isNotEmpty) {
+      var latestRecord = recordSnapshots.first;
+      var status = latestRecord['status'] as String;
+      return '$status';
+    }
+
+    return '';
+  }
 
   //บันทึกข้อมูล
   Future<int> InsertData(transections statement) async {
@@ -41,6 +57,7 @@ class TransectionDB {
       "dataFruit": statement.dataFruit,
       "dataMilk": statement.dataMilk,
       "date": statement.date.toIso8601String(),
+      "status": statement.status,
     });
     db.close();
     return keyID;
@@ -63,7 +80,9 @@ class TransectionDB {
           dataVeget: double.parse(Record["dataVeget"].toString()),
           dataFruit: double.parse(Record["dataFruit"].toString()),
           dataMilk: double.parse(Record["dataMilk"].toString()),
-          date: DateTime.parse(Record["date"].toString())));
+          date: DateTime.parse(Record["date"].toString()),
+          status: Record["status"].toString()));
+          
       print(snapshot);
     }
 

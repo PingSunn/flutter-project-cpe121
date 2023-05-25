@@ -65,21 +65,21 @@ class RowLine extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 24,
+                  width: 15,
                 ),
                 Expanded(
                     child: CountIcon(
                   datacount: datacount1,
                 )),
                 SizedBox(
-                  width: 24,
+                  width: 15,
                 ),
                 Expanded(
                     child: CountIcon(
                   datacount: datacount2,
                 )),
                 SizedBox(
-                  width: 24,
+                  width: 15,
                 ),
                 Expanded(
                     child: StreamBuilder(
