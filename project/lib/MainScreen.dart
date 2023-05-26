@@ -91,7 +91,7 @@ class _MainScreenState extends State<MainScreen> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Sodium()),
+                  MaterialPageRoute(builder: (context) => SodiumTrackerApp()),
                 );
               },
               child: Container(

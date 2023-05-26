@@ -43,6 +43,9 @@ dependencies:
   ansi_styles: ^0.3.2+1
   percent_indicator: ^4.2.3
   animated_background: ^2.0.0
+  shared_preferences: ^2.0.0
+  google_fonts: ^4.0.3
+
   
 
 dev_dependencies:
@@ -56,6 +59,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_launcher_icons: ^0.13.1
+  
   
 flutter_icons:
   android: true
@@ -94,6 +98,7 @@ flutter:
     - assets/images/OnePieceOfApple.jpg
     - assets/images/Spoon.png
     - assets/images/WoodLadel.png
+    - assets/food_data.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
