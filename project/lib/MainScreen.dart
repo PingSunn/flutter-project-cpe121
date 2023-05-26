@@ -13,7 +13,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  String latestMess = '',statusDiet = '';
+  String latestMess = '', statusDiet = '';
 
   @override
   void initState() {
@@ -81,7 +81,7 @@ class _MainScreenState extends State<MainScreen> {
                 );
               },
               child: Container(
-                child: HomeBox("Diet", statusDiet, Color(0xff94bbe9)),
+                child: HomeBox("Health Diet", statusDiet, Color(0xff94bbe9)),
               ),
             ),
             SizedBox(
