@@ -31,7 +31,8 @@ class TransectionDB {
     var finder = Finder(sortOrders: [
       SortOrder(Field.key, false)
     ], limit: 1);
-    var recordSnapshots = await store.find(db, finder: finder);
+    var recordSnapshots = await store.find(db,
+        finder: Finder(sortOrders: [SortOrder(Field.key, false)]));
 
     if (recordSnapshots.isNotEmpty) {
       var latestRecord = recordSnapshots.first;

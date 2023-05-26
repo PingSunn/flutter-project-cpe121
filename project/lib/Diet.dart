@@ -9,6 +9,7 @@ import 'package:project/screen/history.dart';
 import 'package:provider/provider.dart';
 
 class Diet extends StatelessWidget {
+  
   Diet({super.key});
 
   @override
@@ -26,6 +27,9 @@ class Diet extends StatelessWidget {
         ),
         home: Weight(
           title: 'Flutter Demo Home Page',
+          navigateBack: (){
+            Navigator.pop(context);
+          },
         ),
       ),
     );
@@ -33,6 +37,7 @@ class Diet extends StatelessWidget {
 }
 
 class Weight extends StatelessWidget {
+  final VoidCallback navigateBack;
   BigWidget1 Bwg = BigWidget1();
   SmallWidget Swg1 = SmallWidget(
     total: 'รวม(กรัม)',
@@ -73,10 +78,7 @@ class Weight extends StatelessWidget {
     limit: 1000,
   );
   String statusDiet = '';
-  Weight({
-    Key? key,
-    required String title,
-  }) : super(key: key);
+  Weight({Key? key,required String title,required this.navigateBack}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -115,10 +117,7 @@ class Weight extends StatelessWidget {
           shadowColor: Colors.black,
           backgroundColor: Color(0xffeeaeca),
           leading: IconButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MainScreen()));
-            },
+            onPressed: navigateBack,
             icon: Icon(
               Icons.arrow_back,
               size: 30,
