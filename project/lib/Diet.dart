@@ -9,7 +9,6 @@ import 'package:project/screen/history.dart';
 import 'package:provider/provider.dart';
 
 class Diet extends StatelessWidget {
-  
   Diet({super.key});
 
   @override
@@ -27,7 +26,7 @@ class Diet extends StatelessWidget {
         ),
         home: Weight(
           title: 'Flutter Demo Home Page',
-          navigateBack: (){
+          navigateBack: () {
             Navigator.pop(context);
           },
         ),
@@ -75,10 +74,11 @@ class Weight extends StatelessWidget {
     ),
     format1: 200,
     format2: 250,
-    limit: 1000,
+    limit: 300,
   );
   String statusDiet = '';
-  Weight({Key? key,required String title,required this.navigateBack}) : super(key: key);
+  Weight({Key? key, required String title, required this.navigateBack})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -131,23 +131,131 @@ class Weight extends StatelessWidget {
             ),
           ),
           actions: [
-            IconButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => History()));
-                },
-                icon: Icon(
-                  Icons.history,
-                  size: 30,
-                  shadows: [
-                    BoxShadow(
-                        color: Colors.black,
-                        offset: Offset(5, 5),
-                        spreadRadius: 10,
-                        blurRadius: 10)
-                  ],
-                ))
+            PopupMenuButton(
+                itemBuilder: (context) => [
+                      PopupMenuItem(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.history,
+                              color: Colors.black,
+                            ),
+                            Text(
+                              '\tประวัติ',
+                              style: TextStyle(color: Colors.black),
+                            )
+                          ],
+                        ),
+                        value: 'ประวัติ',
+                      ),
+                      PopupMenuItem(
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.question_mark_outlined,
+                              color: Colors.black,
+                            ),
+                            Text(
+                              '\tช่วยเหลือ',
+                              style: TextStyle(color: Colors.black),
+                            )
+                          ],
+                        ),
+                        value: 'ช่วยเหลือ',
+                      ),
+                    ],
+                onSelected: (value) {
+                  if (value == 'ประวัติ') {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => History()));
+                  } else if (value == 'ช่วยเหลือ') {
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return SizedBox(
+                            height: 400,
+                            child: PageView(
+                              children: [
+                                Container(
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/help1.jpg',
+                                          height: 350,
+                                        ),
+                                        Text('ปัดหน้าจอเพื่อดูหน้าถัดไป'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                //ใส่หน้าเพิ่มตรงนี้
+                                Container(
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/help2.jpg',
+                                          height: 350,
+                                        ),
+                                        Text('ปัดหน้าจอเพื่อดูหน้าถัดไป'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/help3.jpg',
+                                          height: 350,
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            "เข้าใจแล้ว",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 18),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Color(0xffeeaeca),
+                                              elevation: 8),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        });
+                  }
+                })
           ],
+          // actions: [
+          //   IconButton(
+          //       onPressed: () {
+          //         Navigator.push(context,
+          //             MaterialPageRoute(builder: (context) => History()));
+          //       },
+          //       icon: Icon(
+          //         Icons.history,
+          //         size: 30,
+          //         shadows: [
+          //           BoxShadow(
+          //               color: Colors.black,
+          //               offset: Offset(5, 5),
+          //               spreadRadius: 10,
+          //               blurRadius: 10)
+          //         ],
+          //       ))
+          // ],
           flexibleSpace: FlexibleSpaceBar(
             title: Column(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -234,16 +342,17 @@ class Weight extends StatelessWidget {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        if(Bwg.getStatusBigWidget() == 'GOOD' && Swg1.percentOut == 1 && Swg2.percentOut == 1){
+                        if (Bwg.getStatusBigWidget() == 'GOOD' &&
+                            (Swg1.percentOut <= 1 || Swg1.percentOut >= 0.6) &&
+                            (Swg2.percentOut == 1 || Swg2.percentOut >= 0.6)) {
                           statusDiet = "คุณกินได้ดีเยี่ยม";
-                        }
-                        else{
+                        } else {
                           statusDiet = "การกินยังไม่เหมาะสม";
                         }
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: const Text('บันทึกข้อมูลเรียบร้อย'),
                           action: SnackBarAction(
-                            label: 'history',
+                            label: 'ประวัติ',
                             onPressed: () {
                               Navigator.push(
                                   context,

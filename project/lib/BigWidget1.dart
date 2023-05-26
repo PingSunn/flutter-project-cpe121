@@ -20,7 +20,7 @@ class BigWidget1 extends StatelessWidget {
     format1: 15,
     format2: 60,
   );
-  
+
   BigWidget1({
     super.key,
   });
@@ -28,9 +28,12 @@ class BigWidget1 extends StatelessWidget {
   Stream<String> TextOut() async* {
     while (true) {
       await Future.delayed(Duration(seconds: 0));
-      
+
       double Total = getRLdataMeat() + getRLdataRice() + getRLdataVeget();
-      if ((0.20 < getRLdataMeat() / Total && getRLdataMeat() / Total < 0.30) && (0.20 < getRLdataRice() / Total && getRLdataRice() / Total < 0.30) && (0.45 < getRLdataVeget() / Total && getRLdataVeget() / Total < 0.55)) {
+      if ((0.20 < getRLdataMeat() / Total && getRLdataMeat() / Total < 0.30) &&
+          (0.20 < getRLdataRice() / Total && getRLdataRice() / Total < 0.30) &&
+          (0.45 < getRLdataVeget() / Total &&
+              getRLdataVeget() / Total < 0.55)) {
         textOut = AnsiStyles.green('GOOD');
       } else {
         textOut = AnsiStyles.red('BAD');
@@ -56,9 +59,7 @@ class BigWidget1 extends StatelessWidget {
           //   end: Alignment.bottomRight,
           // ),
           borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(blurRadius: 20)
-          ]),
+          boxShadow: [BoxShadow(blurRadius: 20)]),
       child: Column(children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -163,8 +164,8 @@ class BigWidget1 extends StatelessWidget {
   double getRLdataVeget() {
     return RLdataVeget.getdataLine();
   }
-  String getStatusBigWidget(){
+
+  String getStatusBigWidget() {
     return textOut;
   }
-
 }

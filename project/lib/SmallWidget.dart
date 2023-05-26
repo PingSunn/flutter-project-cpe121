@@ -36,12 +36,30 @@ class SmallWidget extends StatelessWidget {
       return Colors.red;
     } else if (0.5 <= percent && percent <= 0.75) {
       return Colors.yellow;
-    } else {
+    } else if(0.76 <= percent && percent <= 0.99){
       print("Percent = " + percent.toString());
       return Colors.green;
+    } else{
+      return Colors.red;
     }
   }
 
+    String _getProgressString(double percent){
+      if(percent <= 0.99){
+        
+        return (percent*100).toStringAsFixed(0)+ "%";
+      }else{
+        return 'เกินปริมาณที่เหมาะสม';
+      }
+    }
+
+    Text _getProgressText(double percent){
+      if(percent <= 0.99){
+        return Text((percent*100).toStringAsFixed(0)+ "%");
+      }else{
+        return Text('เกินปริมาณที่เหมาะสม',style: TextStyle(color: Colors.white),);
+      }
+    }
   @override
   Widget build(BuildContext context) {
     RL = RowLine(
@@ -54,11 +72,6 @@ class SmallWidget extends StatelessWidget {
       height: 270,
       decoration: BoxDecoration(
           color: Colors.white,
-          // gradient: LinearGradient(
-          //       colors: [Color.fromARGB(255, 255, 255, 255), Color.fromARGB(255, 236, 255, 174)],
-          //       begin: Alignment.topLeft,
-          //       end: Alignment.bottomRight,
-          //     ),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(blurRadius: 20)
@@ -117,7 +130,7 @@ class SmallWidget extends StatelessWidget {
                 animationDuration: 1000,
                 lineHeight: 20.0,
                 percent: percent, // Use snapshot.data here
-                center: Text((percent * 100).toStringAsFixed(0) + " %"),
+                center: _getProgressText(percent),
                 // ignore: deprecated_member_use
                 linearStrokeCap: LinearStrokeCap.round,
                 progressColor: _getProgressColor(percent),
