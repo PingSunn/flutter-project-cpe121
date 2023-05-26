@@ -187,10 +187,10 @@ class _BmiState extends State<Bmi> {
                     ),
                     ElevatedButton(
                       onPressed: _calculate,
-                      style: ElevatedButton.styleFrom(backgroundColor: const Color(0xff94bbe9)),
+                      style: ElevatedButton.styleFrom(backgroundColor: const Color(0xff94bbe9).withOpacity(0.8)),
                       child: const Text(
                         'Calculate...',
-                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                     ),
                     Text(
