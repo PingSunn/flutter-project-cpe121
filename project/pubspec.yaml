@@ -98,8 +98,8 @@ flutter:
     - assets/images/OnePieceOfApple.jpg
     - assets/images/Spoon.png
     - assets/images/WoodLadel.png
-    - assets/food_data.json
     - assets/images/
+    - assets/food_data.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
