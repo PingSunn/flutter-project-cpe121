@@ -66,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
                 child: HomeBox(
                   "Body Mass Index",
                   latestMess,
-                  Color(0xffeeaeca),
+                  Color(0xffeeaeca).withOpacity(0.75),
                 ),
               ),
             ),
@@ -81,7 +81,7 @@ class _MainScreenState extends State<MainScreen> {
                 );
               },
               child: Container(
-                child: HomeBox("Health Diet", statusDiet, Color(0xff94bbe9)),
+                child: HomeBox("Health Diet", statusDiet, Color(0xff94bbe9).withOpacity(0.75)),
               ),
             ),
             SizedBox(
@@ -98,7 +98,7 @@ class _MainScreenState extends State<MainScreen> {
                 child: HomeBox(
                   "Sodium",
                   "0",
-                  Color(0xffeeaeca),
+                  Color(0xffeeaeca).withOpacity(0.75),
                 ),
               ),
             ),
