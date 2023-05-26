@@ -1,11 +1,14 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class HomeBox extends StatelessWidget {
   String title = "";
   String text = "";
   Color color = Colors.black;
 
-  HomeBox(this.title, this.text, this.color);
+  HomeBox(this.title, this.text, this.color, {super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,12 +20,12 @@ class HomeBox extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Expanded(
               child: Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
             ),
             textAlign: TextAlign.right,

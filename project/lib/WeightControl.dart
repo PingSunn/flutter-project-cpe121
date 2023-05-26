@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class WeightControl extends StatefulWidget {
@@ -10,6 +12,6 @@ class WeightControl extends StatefulWidget {
 class _WeightControlState extends State<WeightControl> {
   @override
   Widget build(BuildContext context) {
-    return Text("Weight Control Page");
+    return const Text("Weight Control Page");
   }
 }

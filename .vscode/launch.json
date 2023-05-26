@@ -1,0 +1,52 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Sodium",
+            "cwd": "${workspaceFolder}/project",
+            "program": "lib/Sodium.dart",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "Sodium",
+            "cwd": "project",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "project (profile mode)",
+            "cwd": "project",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "project (release mode)",
+            "cwd": "project",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "lib",
+            "cwd": "project\\lib",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "lib (profile mode)",
+            "cwd": "project\\lib",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "lib (release mode)",
+            "cwd": "project\\lib",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

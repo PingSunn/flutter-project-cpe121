@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class Diet extends StatefulWidget {
@@ -10,6 +12,6 @@ class Diet extends StatefulWidget {
 class _DietState extends State<Diet> {
   @override
   Widget build(BuildContext context) {
-    return Text("Diet Page");
+    return const Text("Diet Page");
   }
 }
