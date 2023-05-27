@@ -41,7 +41,7 @@ class Weight extends StatelessWidget {
   SmallWidget Swg1 = SmallWidget(
     total: 'รวม(กรัม)',
     data: 'ผลไม้',
-    unit1: '   ชิ้น', //ขอลักไก่หน่อยละกัน ไม่รู้จะแก้ยังไงให้ตรงละ
+    unit1: '  ชิ้น', //ขอลักไก่หน่อยละกัน ไม่รู้จะแก้ยังไงให้ตรงละ
     unit2: '   ผล',
     asset1: Image.asset(
       'assets/images/OnePieceOfApple.jpg',
@@ -331,80 +331,70 @@ class Weight extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [Colors.green, Colors.blue],
-                      ),
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        if (Bwg.getStatusBigWidget() == 'GOOD' &&
-                            (Swg1.percentOut <= 1 || Swg1.percentOut >= 0.6) &&
-                            (Swg2.percentOut == 1 || Swg2.percentOut >= 0.6)) {
-                          statusDiet = "คุณกินได้ดีเยี่ยม";
-                        } else {
-                          statusDiet = "การกินยังไม่เหมาะสม";
-                        }
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: const Text('บันทึกข้อมูลเรียบร้อย'),
-                          action: SnackBarAction(
-                            label: 'ประวัติ',
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => History()));
-                            },
-                          ),
-                        ));
-                        //เตรียมข้อมูล
-                        transections statement = transections(
-                            dataMeat: Bwg.getRLdataMeat(),
-                            dataRice: Bwg.getRLdataRice(),
-                            dataVeget: Bwg.getRLdataVeget(),
-                            dataFruit: Swg1.getRLSmallWidget(),
-                            dataMilk: Swg2.getRLSmallWidget(),
-                            date: DateTime.now(),
-                            status: statusDiet);
-
-                        //เรียก Provider
-                        var provider = Provider.of<TransectionProvider>(context,
-                            listen: false);
-                        provider.addTransection(statement);
-
-                        print(Bwg.getRLdataMeat());
-                        print(Bwg.getRLdataRice());
-                        print(Bwg.getRLdataVeget());
-                        print(Swg1.getRLSmallWidget());
-                        print(Swg2.getRLSmallWidget());
-                        print(statusDiet);
-                        print("Confirm");
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        foregroundColor: Colors.black,
-                        padding: EdgeInsets.symmetric(horizontal: 100),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      child: Text(
-                        "Confirm",
-                        style: TextStyle(
-                          fontFamily: 'Twist',
-                          fontSize: 32,
-                          color: Colors.white,
-                          shadows: [
-                            BoxShadow(
-                                color: Colors.black,
-                                offset: Offset(5, 5),
-                                spreadRadius: 10,
-                                blurRadius: 10)
-                          ],
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (Bwg.getStatusBigWidget() == 'GOOD' &&
+                          (Swg1.percentOut <= 1 || Swg1.percentOut >= 0.6) &&
+                          (Swg2.percentOut == 1 || Swg2.percentOut >= 0.6)) {
+                        statusDiet = "คุณกินได้ดีเยี่ยม";
+                      } else {
+                        statusDiet = "การกินยังไม่เหมาะสม";
+                      }
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: const Text('บันทึกข้อมูลเรียบร้อย'),
+                        action: SnackBarAction(
+                          label: 'ประวัติ',
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => History()));
+                          },
                         ),
+                      ));
+                      //เตรียมข้อมูล
+                      transections statement = transections(
+                          dataMeat: Bwg.getRLdataMeat(),
+                          dataRice: Bwg.getRLdataRice(),
+                          dataVeget: Bwg.getRLdataVeget(),
+                          dataFruit: Swg1.getRLSmallWidget(),
+                          dataMilk: Swg2.getRLSmallWidget(),
+                          date: DateTime.now(),
+                          status: statusDiet);
+
+                      //เรียก Provider
+                      var provider = Provider.of<TransectionProvider>(context,
+                          listen: false);
+                      provider.addTransection(statement);
+
+                      print(Bwg.getRLdataMeat());
+                      print(Bwg.getRLdataRice());
+                      print(Bwg.getRLdataVeget());
+                      print(Swg1.getRLSmallWidget());
+                      print(Swg2.getRLSmallWidget());
+                      print(statusDiet);
+                      print("Confirm");
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xff94bbe9),
+                      foregroundColor: Colors.black,
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                    ),
+                    child: Text(
+                      "Confirm",
+                      style: TextStyle(
+                        fontFamily: 'Twist',
+                        fontSize: 32,
+                        color: Colors.white,
+                        shadows: [
+                          BoxShadow(
+                              color: Colors.black,
+                              offset: Offset(5, 5),
+                              spreadRadius: 10,
+                              blurRadius: 10)
+                        ],
                       ),
                     ),
                   ),

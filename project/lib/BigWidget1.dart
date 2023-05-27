@@ -64,17 +64,17 @@ class BigWidget1 extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              SizedBox(width: 85,),
               Image.asset(
                 'assets/images/Spoon.png',
-                height: 80,
-                width: 140,
+                height: 100,
+                width: 100,
               ),
               Image.asset(
                 'assets/images/WoodLadel.png',
                 height: 100,
-                width: 80,
+                width: 100,
               ),
             ],
           ),
@@ -89,7 +89,7 @@ class BigWidget1 extends StatelessWidget {
               style: TextStyle(fontFamily: 'Twist'),
             ),
             SizedBox(
-              width: 50,
+              width: 70,
             ),
             Text(
               'ทัพพี',

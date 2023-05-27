@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:project/helpScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FoodItem {
@@ -32,7 +33,8 @@ class NaaState extends State<Naa> {
   }
 
   void calculateSumSodium() {
-    sumSodium = widget.selectedFoods.fold(0, (total, foodItem) => total + foodItem.sodium);
+    sumSodium = widget.selectedFoods
+        .fold(0, (total, foodItem) => total + foodItem.sodium);
   }
 
   @override
@@ -147,12 +149,117 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: const Text('ปริมาณโซเดียมที่ควรบริโภคใน 1 วัน'),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.history),
-              onPressed: navigateToHistoryPage,
+          title: Text(
+            "ปริมาณโซเดียมที่ควรบริโภคในหนึ่งวัน",
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 21,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Itim'),
+          ),
+          centerTitle: false,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [Color(0xffeeaeca), Color(0xff94bbe9)]),
             ),
+          ),
+          actions: [
+            PopupMenuButton(
+                itemBuilder: (context) => [
+                      PopupMenuItem(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.history,
+                              color: Colors.black,
+                            ),
+                            Text(
+                              '\tประวัติ',
+                              style: TextStyle(color: Colors.black),
+                            )
+                          ],
+                        ),
+                        value: 'ประวัติ',
+                      ),
+                      PopupMenuItem(
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.question_mark_outlined,
+                              color: Colors.black,
+                            ),
+                            Text(
+                              '\tช่วยเหลือ',
+                              style: TextStyle(color: Colors.black),
+                            )
+                          ],
+                        ),
+                        value: 'ช่วยเหลือ',
+                      ),
+                    ],
+                onSelected: (value) {
+                  if (value == 'ประวัติ') {
+                    navigateToHistoryPage();
+                  } else if (value == 'ช่วยเหลือ') {
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return SizedBox(
+                            height: 330,
+                            child: PageView(
+                              children: [
+                                HelpScreen(
+                                    asset: Image.asset(
+                                        'assets/images/helpSodium1.jpg')),
+                                HelpScreen(
+                                    asset: Image.asset(
+                                        'assets/images/helpSodium2.jpg')),
+                                HelpScreen(
+                                    asset: Image.asset(
+                                        'assets/images/helpSodium3.jpg')),
+                                         HelpScreen(
+                                    asset: Image.asset(
+                                        'assets/images/helpSodium4.jpg')),
+                                Container(
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                            'assets/images/helpSodium5.jpg'),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            "เข้าใจแล้ว",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 18),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Color(0xffeeaeca),
+                                              elevation: 8),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        });
+                  }
+                }
+                // IconButton(
+                //   icon: const Icon(Icons.history),
+                //   onPressed: navigateToHistoryPage,
+                // ),
+                )
           ],
         ),
         body: Column(
@@ -231,7 +338,29 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
             ),
             ElevatedButton(
               onPressed: confirmSelection,
-              child: const Text('Confirm'),
+              style: ElevatedButton.styleFrom(
+                elevation: 20,
+                backgroundColor: Color(0xff94bbe9),
+                foregroundColor: Colors.black,
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+              ),
+              child: Text(
+                "Confirm",
+                style: TextStyle(
+                  fontFamily: 'Twist',
+                  fontSize: 32,
+                  color: Colors.white,
+                  shadows: [
+                    BoxShadow(
+                        color: Colors.black,
+                        offset: Offset(5, 5),
+                        spreadRadius: 10,
+                        blurRadius: 10)
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -305,7 +434,23 @@ class HistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ประวัติการบริโภคโซเดียม'),
+        title: Text(
+          "ประวัติการบริโภคโซเดียม",
+          style: TextStyle(
+              color: Colors.black,
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Itim'),
+        ),
+        centerTitle: true,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [Color(0xffeeaeca), Color(0xff94bbe9)]),
+          ),
+        ),
       ),
       body: FutureBuilder<List<String>>(
         future: getSodiumHistory(),
@@ -356,7 +501,9 @@ class HistoryPage extends StatelessWidget {
 
     for (String entry in history) {
       int sodiumIndex = entry.lastIndexOf('-') + 1;
-      int sodium = int.tryParse(entry.substring(sodiumIndex, entry.length - 3).trim()) ?? 0;
+      int sodium =
+          int.tryParse(entry.substring(sodiumIndex, entry.length - 3).trim()) ??
+              0;
       totalSodium += sodium;
     }
 
