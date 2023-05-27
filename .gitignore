@@ -3,3 +3,5 @@ project/pubspec.lock
 project/macos/Flutter/GeneratedPluginRegistrant.swift
 *.lock
 *.swift
+project/macos/Flutter/GeneratedPluginRegistrant.swift
+project/pubspec.lock

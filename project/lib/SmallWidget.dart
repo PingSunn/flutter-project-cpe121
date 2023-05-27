@@ -36,30 +36,33 @@ class SmallWidget extends StatelessWidget {
       return Colors.red;
     } else if (0.5 <= percent && percent <= 0.75) {
       return Colors.yellow;
-    } else if(0.76 <= percent && percent <= 0.99){
+    } else if (0.76 <= percent && percent <= 0.99) {
       print("Percent = " + percent.toString());
       return Colors.green;
-    } else{
+    } else {
       return Colors.red;
     }
   }
 
-    String _getProgressString(double percent){
-      if(percent <= 0.99){
-        
-        return (percent*100).toStringAsFixed(0)+ "%";
-      }else{
-        return 'เกินปริมาณที่เหมาะสม';
-      }
+  String _getProgressString(double percent) {
+    if (percent <= 0.99) {
+      return (percent * 100).toStringAsFixed(0) + "%";
+    } else {
+      return 'เกินปริมาณที่เหมาะสม';
     }
+  }
 
-    Text _getProgressText(double percent){
-      if(percent <= 0.99){
-        return Text((percent*100).toStringAsFixed(0)+ "%");
-      }else{
-        return Text('เกินปริมาณที่เหมาะสม',style: TextStyle(color: Colors.white),);
-      }
+  Text _getProgressText(double percent) {
+    if (percent <= 0.99) {
+      return Text((percent * 100).toStringAsFixed(0) + "%");
+    } else {
+      return Text(
+        'เกินปริมาณที่เหมาะสม',
+        style: TextStyle(color: Colors.white),
+      );
     }
+  }
+
   @override
   Widget build(BuildContext context) {
     RL = RowLine(
@@ -70,18 +73,17 @@ class SmallWidget extends StatelessWidget {
 
     return Container(
       height: 270,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(blurRadius: 20)
-          ]),
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20), boxShadow: [
+        BoxShadow(blurRadius: 20)
+      ]),
       child: Column(children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              SizedBox(width: 80,),
+              SizedBox(
+                width: 80,
+              ),
               asset1,
               asset2
             ],
@@ -132,7 +134,7 @@ class SmallWidget extends StatelessWidget {
                 percent: percent, // Use snapshot.data here
                 center: _getProgressText(percent),
                 // ignore: deprecated_member_use
-                linearStrokeCap: LinearStrokeCap.round,
+                linearStrokeCap: LinearStrokeCap.roundAll,
                 progressColor: _getProgressColor(percent),
               );
             } else {

@@ -11,7 +11,7 @@ class HistoryScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "History",
+            "BMI History",
             style: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold, fontFamily: 'Itim'),
           ),
           centerTitle: true,

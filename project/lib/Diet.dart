@@ -77,8 +77,7 @@ class Weight extends StatelessWidget {
     limit: 300,
   );
   String statusDiet = '';
-  Weight({Key? key, required String title, required this.navigateBack})
-      : super(key: key);
+  Weight({Key? key, required String title, required this.navigateBack}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -122,11 +121,7 @@ class Weight extends StatelessWidget {
               Icons.arrow_back,
               size: 30,
               shadows: [
-                BoxShadow(
-                    color: Colors.black,
-                    offset: Offset(5, 5),
-                    spreadRadius: 10,
-                    blurRadius: 10)
+                BoxShadow(color: Colors.black, offset: Offset(5, 5), spreadRadius: 10, blurRadius: 10)
               ],
             ),
           ),
@@ -167,8 +162,7 @@ class Weight extends StatelessWidget {
                     ],
                 onSelected: (value) {
                   if (value == 'ประวัติ') {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => History()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => History()));
                   } else if (value == 'ช่วยเหลือ') {
                     showModalBottomSheet(
                         context: context,
@@ -218,14 +212,9 @@ class Weight extends StatelessWidget {
                                           },
                                           child: Text(
                                             "เข้าใจแล้ว",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 18),
+                                            style: TextStyle(color: Colors.black, fontSize: 18),
                                           ),
-                                          style: ElevatedButton.styleFrom(
-                                              backgroundColor:
-                                                  Color(0xffeeaeca),
-                                              elevation: 8),
+                                          style: ElevatedButton.styleFrom(backgroundColor: Color(0xffeeaeca), elevation: 8),
                                         )
                                       ],
                                     ),
@@ -265,30 +254,22 @@ class Weight extends StatelessWidget {
                   'อาหารจานสุขภาพ',
                   style: TextStyle(
                     fontSize: 20,
-                    fontFamily: 'Twist',
+                    fontFamily: 'Prompt',
                     shadows: [
-                      BoxShadow(
-                          color: Colors.black,
-                          offset: Offset(5, 5),
-                          spreadRadius: 10,
-                          blurRadius: 10)
+                      BoxShadow(color: Colors.black, offset: Offset(5, 5), spreadRadius: 10, blurRadius: 10)
                     ],
                   ),
                 ),
                 Text(
-                  "Healthy Food",
+                  "Healthy Diet",
                   style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Twist',
-                      shadows: [
-                        BoxShadow(
-                            color: Colors.black,
-                            offset: Offset(5, 5),
-                            spreadRadius: 10,
-                            blurRadius: 10)
-                      ],
-                      color: Colors.white),
+                    fontFamily: 'Itim',
+                    fontSize: 16,
+                    color: Colors.white,
+                    shadows: [
+                      BoxShadow(color: Colors.black, offset: Offset(2, 2), spreadRadius: 10, blurRadius: 10)
+                    ],
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -333,9 +314,7 @@ class Weight extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 10.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      if (Bwg.getStatusBigWidget() == 'GOOD' &&
-                          (Swg1.percentOut <= 1 || Swg1.percentOut >= 0.6) &&
-                          (Swg2.percentOut == 1 || Swg2.percentOut >= 0.6)) {
+                      if (Bwg.getStatusBigWidget() == 'GOOD' && (Swg1.percentOut <= 1 || Swg1.percentOut >= 0.6) && (Swg2.percentOut == 1 || Swg2.percentOut >= 0.6)) {
                         statusDiet = "คุณกินได้ดีเยี่ยม";
                       } else {
                         statusDiet = "การกินยังไม่เหมาะสม";
@@ -345,26 +324,15 @@ class Weight extends StatelessWidget {
                         action: SnackBarAction(
                           label: 'ประวัติ',
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => History()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => History()));
                           },
                         ),
                       ));
                       //เตรียมข้อมูล
-                      transections statement = transections(
-                          dataMeat: Bwg.getRLdataMeat(),
-                          dataRice: Bwg.getRLdataRice(),
-                          dataVeget: Bwg.getRLdataVeget(),
-                          dataFruit: Swg1.getRLSmallWidget(),
-                          dataMilk: Swg2.getRLSmallWidget(),
-                          date: DateTime.now(),
-                          status: statusDiet);
+                      transections statement = transections(dataMeat: Bwg.getRLdataMeat(), dataRice: Bwg.getRLdataRice(), dataVeget: Bwg.getRLdataVeget(), dataFruit: Swg1.getRLSmallWidget(), dataMilk: Swg2.getRLSmallWidget(), date: DateTime.now(), status: statusDiet);
 
                       //เรียก Provider
-                      var provider = Provider.of<TransectionProvider>(context,
-                          listen: false);
+                      var provider = Provider.of<TransectionProvider>(context, listen: false);
                       provider.addTransection(statement);
 
                       print(Bwg.getRLdataMeat());
@@ -379,21 +347,16 @@ class Weight extends StatelessWidget {
                       backgroundColor: Color(0xff94bbe9),
                       foregroundColor: Colors.black,
                       padding: EdgeInsets.symmetric(horizontal: 20),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                     ),
                     child: Text(
                       "Confirm",
                       style: TextStyle(
-                        fontFamily: 'Twist',
+                        fontFamily: 'Itim',
                         fontSize: 32,
-                        color: Colors.white,
+                        color: Colors.black,
                         shadows: [
-                          BoxShadow(
-                              color: Colors.black,
-                              offset: Offset(5, 5),
-                              spreadRadius: 10,
-                              blurRadius: 10)
+                          BoxShadow(color: Colors.white, offset: Offset(2, 2), spreadRadius: 10, blurRadius: 10)
                         ],
                       ),
                     ),

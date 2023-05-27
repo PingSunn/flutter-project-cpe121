@@ -33,8 +33,7 @@ class NaaState extends State<Naa> {
   }
 
   void calculateSumSodium() {
-    sumSodium = widget.selectedFoods
-        .fold(0, (total, foodItem) => total + foodItem.sodium);
+    sumSodium = widget.selectedFoods.fold(0, (total, foodItem) => total + foodItem.sodium);
   }
 
   @override
@@ -150,20 +149,16 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text(
-            "ปริมาณโซเดียมที่ควรบริโภคในหนึ่งวัน",
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 21,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Itim'),
+            "Daily sodium intake",
+            style: TextStyle(color: Colors.black, fontSize: 21, fontWeight: FontWeight.bold, fontFamily: 'Itim'),
           ),
           centerTitle: false,
           flexibleSpace: Container(
             decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [Color(0xffeeaeca), Color(0xff94bbe9)]),
+              gradient: LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: [
+                Color(0xffeeaeca),
+                Color(0xff94bbe9)
+              ]),
             ),
           ),
           actions: [
@@ -212,38 +207,24 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
                             height: 330,
                             child: PageView(
                               children: [
-                                HelpScreen(
-                                    asset: Image.asset(
-                                        'assets/images/helpSodium1.jpg')),
-                                HelpScreen(
-                                    asset: Image.asset(
-                                        'assets/images/helpSodium2.jpg')),
-                                HelpScreen(
-                                    asset: Image.asset(
-                                        'assets/images/helpSodium3.jpg')),
-                                         HelpScreen(
-                                    asset: Image.asset(
-                                        'assets/images/helpSodium4.jpg')),
+                                HelpScreen(asset: Image.asset('assets/images/helpSodium1.jpg')),
+                                HelpScreen(asset: Image.asset('assets/images/helpSodium2.jpg')),
+                                HelpScreen(asset: Image.asset('assets/images/helpSodium3.jpg')),
+                                HelpScreen(asset: Image.asset('assets/images/helpSodium4.jpg')),
                                 Container(
                                   child: Center(
                                     child: Column(
                                       children: [
-                                        Image.asset(
-                                            'assets/images/helpSodium5.jpg'),
+                                        Image.asset('assets/images/helpSodium5.jpg'),
                                         ElevatedButton(
                                           onPressed: () {
                                             Navigator.pop(context);
                                           },
                                           child: Text(
                                             "เข้าใจแล้ว",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 18),
+                                            style: TextStyle(color: Colors.black, fontSize: 18),
                                           ),
-                                          style: ElevatedButton.styleFrom(
-                                              backgroundColor:
-                                                  Color(0xffeeaeca),
-                                              elevation: 8),
+                                          style: ElevatedButton.styleFrom(backgroundColor: Color(0xffeeaeca), elevation: 8),
                                         ),
                                       ],
                                     ),
@@ -254,19 +235,20 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
                           );
                         });
                   }
-                }
-                // IconButton(
-                //   icon: const Icon(Icons.history),
-                //   onPressed: navigateToHistoryPage,
-                // ),
-                )
+                })
           ],
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context); // Navigate back when the button is pressed
+            },
+          ),
         ),
         body: Column(
           children: [
             Naa(selectedFoods: selectedFoods),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(4.0),
               child: TextField(
                 decoration: const InputDecoration(
                   labelText: 'Search',
@@ -325,40 +307,40 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
                 },
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(16),
-              color: Colors.grey[200],
-              child: Text(
-                'Total Sodium: $totalSodium mg',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 10),
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                color: Colors.grey[200],
+                child: Text(
+                  'Total Sodium: $totalSodium mg',
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: confirmSelection,
-              style: ElevatedButton.styleFrom(
-                elevation: 20,
-                backgroundColor: Color(0xff94bbe9),
-                foregroundColor: Colors.black,
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)),
-              ),
-              child: Text(
-                "Confirm",
-                style: TextStyle(
-                  fontFamily: 'Twist',
-                  fontSize: 32,
-                  color: Colors.white,
-                  shadows: [
-                    BoxShadow(
-                        color: Colors.black,
-                        offset: Offset(5, 5),
-                        spreadRadius: 10,
-                        blurRadius: 10)
-                  ],
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: ElevatedButton(
+                onPressed: confirmSelection,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xff94bbe9),
+                  foregroundColor: Colors.black,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                ),
+                child: Text(
+                  "Confirm",
+                  style: TextStyle(
+                    fontFamily: 'Itim',
+                    fontSize: 32,
+                    color: Colors.black,
+                    shadows: [
+                      BoxShadow(color: Colors.white, offset: Offset(2, 2), spreadRadius: 10, blurRadius: 10)
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -435,21 +417,26 @@ class HistoryPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "ประวัติการบริโภคโซเดียม",
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Itim'),
+          "Sodium Consumption",
+          style: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold, fontFamily: 'Itim'),
         ),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                colors: [Color(0xffeeaeca), Color(0xff94bbe9)]),
+            gradient: LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: [
+              Color(0xffeeaeca),
+              Color(0xff94bbe9)
+            ]),
           ),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Handle the back button press
+            // Add your desired functionality here
+            print('Back button pressed');
+            Navigator.pop(context);
+          },
         ),
       ),
       body: FutureBuilder<List<String>>(
@@ -477,7 +464,10 @@ class HistoryPage extends StatelessWidget {
                       const SnackBar(content: Text('History cleared')),
                     );
                   },
-                  child: const Text('Clear History'),
+                  child: const Text(
+                    'Clear History',
+                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
                 ),
               ],
             );
@@ -501,9 +491,7 @@ class HistoryPage extends StatelessWidget {
 
     for (String entry in history) {
       int sodiumIndex = entry.lastIndexOf('-') + 1;
-      int sodium =
-          int.tryParse(entry.substring(sodiumIndex, entry.length - 3).trim()) ??
-              0;
+      int sodium = int.tryParse(entry.substring(sodiumIndex, entry.length - 3).trim()) ?? 0;
       totalSodium += sodium;
     }
 
