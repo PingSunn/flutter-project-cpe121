@@ -97,7 +97,7 @@ class _MainScreenState extends State<MainScreen> {
               child: Container(
                 child: HomeBox(
                   "Sodium",
-                  "0",
+                  "",
                   Color(0xffeeaeca).withOpacity(0.75),
                 ),
               ),
