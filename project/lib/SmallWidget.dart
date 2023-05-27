@@ -80,8 +80,8 @@ class SmallWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              SizedBox(width: 80,),
               asset1,
               asset2
             ],
@@ -90,7 +90,7 @@ class SmallWidget extends StatelessWidget {
         Row(
           children: [
             SizedBox(
-              width: 110,
+              width: 130,
             ),
             Text(
               unit1,
