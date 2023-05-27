@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:convert';
@@ -135,16 +136,16 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
     });
   }
 
-  void saveSodiumHistory(FoodItem foodItem) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String entry =
-        '${foodItem.name} - ${foodItem.sodium} mg - ${DateTime.now().toString()}';
-    history.add(entry);
+void saveSodiumHistory(FoodItem foodItem) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String entry = '${foodItem.name} - ${foodItem.sodium} mg - ${DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now())}';
+  history.add(entry);
 
-    setState(() {});
+  setState(() {});
 
-    await prefs.setStringList('sodiumHistory', history);
-  }
+  await prefs.setStringList('sodiumHistory', history);
+}
+
 
   void removeSodiumHistory(FoodItem foodItem) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -376,6 +377,7 @@ class _HistoryPageState extends State<HistoryPage> {
       updatedHistory = [];
     });
 
+    // Update the history stored in shared preferences
     widget.history.clear();
     await prefs.setStringList('sodiumHistory', widget.history);
   }
