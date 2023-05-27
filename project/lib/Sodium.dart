@@ -1,5 +1,6 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, unnecessary_import
 
+import 'dart:ui';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -136,16 +137,16 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
     });
   }
 
-void saveSodiumHistory(FoodItem foodItem) async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  String entry = '${foodItem.name} - ${foodItem.sodium} mg - ${DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now())}';
-  history.add(entry);
+  void saveSodiumHistory(FoodItem foodItem) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String entry =
+        '${foodItem.name} - ${foodItem.sodium} mg - ${DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now())}';
+    history.add(entry);
 
-  setState(() {});
+    setState(() {});
 
-  await prefs.setStringList('sodiumHistory', history);
-}
-
+    await prefs.setStringList('sodiumHistory', history);
+  }
 
   void removeSodiumHistory(FoodItem foodItem) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -349,8 +350,16 @@ class _HistoryPageState extends State<HistoryPage> {
             child: ListView.builder(
               itemCount: updatedHistory.length,
               itemBuilder: (context, index) {
+                final historyEntry = updatedHistory[index];
+                final entryParts = historyEntry.split(' - ');
+                final foodName = entryParts[0];
+                final sodium = entryParts[1];
+                final recordingTime = entryParts[2];
+
                 return ListTile(
-                  title: Text(updatedHistory[index]),
+                  title: Text(foodName),
+                  subtitle: Text('Sodium: $sodium'),
+                  trailing: Text(recordingTime),
                 );
               },
             ),
@@ -377,7 +386,6 @@ class _HistoryPageState extends State<HistoryPage> {
       updatedHistory = [];
     });
 
-    // Update the history stored in shared preferences
     widget.history.clear();
     await prefs.setStringList('sodiumHistory', widget.history);
   }
