@@ -30,12 +30,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    
   shared_preferences: ^2.1.1
   google_fonts: ^4.0.5
   cupertino_icons: ^1.0.2
   percent_indicator: ^4.2.3
-  painter: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -54,7 +52,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/food_data.json
+  - assets/food_data.json
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

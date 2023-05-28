@@ -134,12 +134,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "painter",
-      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/painter-2.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "path",
       "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.8.3",
       "packageUri": "lib/",
@@ -320,7 +314,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-05-28T21:23:34.929648Z",
+  "generated": "2023-05-28T21:35:40.231281Z",
   "generator": "pub",
   "generatorVersion": "3.0.2"
 }
