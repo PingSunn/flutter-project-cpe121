@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:convert';
@@ -94,11 +95,13 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
   List<FoodItem> availableFoods = [];
   List<FoodItem> selectedFoods = [];
   int totalSodium = 0;
+  List<String> history = [];
 
   @override
   void initState() {
     super.initState();
     loadFoodItems();
+    loadSodiumHistory();
   }
 
   Future<void> loadFoodItems() async {
@@ -110,34 +113,42 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
     });
   }
 
+  Future<void> loadSodiumHistory() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      history = prefs.getStringList('sodiumHistory') ?? [];
+    });
+  }
+
   void _onFoodItemSelected(FoodItem foodItem, bool selected) {
     setState(() {
       if (selected) {
         selectedFoods.add(foodItem);
         totalSodium += foodItem.sodium.toInt();
+        saveSodiumHistory(foodItem);
       } else {
         selectedFoods.remove(foodItem);
         totalSodium -= foodItem.sodium.toInt();
+        removeSodiumHistory(foodItem);
       }
-
-      saveSodiumHistory(selectedFoods);
     });
   }
 
-  void saveSodiumHistory(List<FoodItem> selectedFoods) async {
+  void saveSodiumHistory(FoodItem foodItem) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.remove('sodiumHistory');
+    String entry =
+        '${foodItem.name} - ${foodItem.sodium} mg - ${DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now())}';
+    history.add(entry);
 
-    DateTime now = DateTime.now();
-    String currentDate = '${now.day}/${now.month}/${now.year}';
-    List<String> history = prefs.getStringList('sodiumHistory') ?? [];
+    setState(() {});
 
-    history.clear();
-    for (FoodItem foodItem in selectedFoods) {
-      String entry = '$currentDate: ${foodItem.name} - ${foodItem.sodium} mg';
-      history.add(entry);
-    }
+    await prefs.setStringList('sodiumHistory', history);
+  }
 
+  void removeSodiumHistory(FoodItem foodItem) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String entry = '${foodItem.name} - ${foodItem.sodium} mg';
+    history.remove(entry);
     await prefs.setStringList('sodiumHistory', history);
   }
 
@@ -253,6 +264,7 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
         builder: (context) => HistoryPage(
           selectedFoods: selectedFoods,
           totalSodium: totalSodium,
+          history: history,
         ),
       ),
     );
@@ -277,11 +289,10 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
                     builder: (context) => HistoryPage(
                       selectedFoods: selectedFoods,
                       totalSodium: totalSodium,
+                      history: history,
                     ),
                   ),
                 ).then((_) {});
-
-                saveSodiumHistory(selectedFoods);
               },
               child: const Text('Confirm'),
             ),
@@ -298,15 +309,31 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
   }
 }
 
-class HistoryPage extends StatelessWidget {
+class HistoryPage extends StatefulWidget {
   final List<FoodItem> selectedFoods;
   final int totalSodium;
+  final List<String> history;
 
   const HistoryPage({
     Key? key,
     required this.selectedFoods,
     required this.totalSodium,
+    required this.history,
   }) : super(key: key);
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _HistoryPageState createState() => _HistoryPageState();
+}
+
+class _HistoryPageState extends State<HistoryPage> {
+  List<String> updatedHistory = [];
+
+  @override
+  void initState() {
+    super.initState();
+    updatedHistory = widget.history;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -314,41 +341,36 @@ class HistoryPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('ประวัติการบริโภคโซเดียม'),
       ),
-      body: FutureBuilder<List<String>>(
-        future: getSodiumHistory(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            List<String> history = snapshot.data!;
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: updatedHistory.length,
+              itemBuilder: (context, index) {
+                final historyEntry = updatedHistory[index];
+                final entryParts = historyEntry.split(' - ');
+                final foodName = entryParts[0];
+                final sodium = entryParts[1];
+                final recordingTime = entryParts[2];
 
-            return Column(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: history.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(history[index]),
-                      );
-                    },
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    clearSodiumHistory();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('History cleared')),
-                    );
-                  },
-                  child: const Text('Clear History'),
-                ),
-              ],
-            );
-          } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
+                return ListTile(
+                  title: Text(foodName),
+                  subtitle: Text('Sodium: $sodium'),
+                  trailing: Text(recordingTime),
+                );
+              },
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              clearSodiumHistory();
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('History cleared')),
+              );
+            },
+            child: const Text('Clear History'),
+          ),
+        ],
       ),
     );
   }
@@ -356,21 +378,28 @@ class HistoryPage extends StatelessWidget {
   void clearSodiumHistory() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('sodiumHistory');
+
+    setState(() {
+      updatedHistory = [];
+    });
+
+    widget.history.clear();
+    await prefs.setStringList('sodiumHistory', widget.history);
+  }
+}
+
+int calculateTotalSodium(List<String> history) {
+  int totalSodium = 0;
+
+  for (String entry in history) {
+    int sodiumIndex = entry.lastIndexOf('-') + 1;
+    int sodium =
+        int.tryParse(entry.substring(sodiumIndex, entry.length - 3).trim()) ??
+            0;
+    totalSodium += sodium;
   }
 
-  int calculateTotalSodium(List<String> history) {
-    int totalSodium = 0;
-
-    for (String entry in history) {
-      int sodiumIndex = entry.lastIndexOf('-') + 1;
-      int sodium =
-          int.tryParse(entry.substring(sodiumIndex, entry.length - 3).trim()) ??
-              0;
-      totalSodium += sodium;
-    }
-
-    return totalSodium;
-  }
+  return totalSodium;
 }
 
 Future<List<String>> getSodiumHistory() async {
