@@ -150,7 +150,7 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
         appBar: AppBar(
           title: Text(
             "Daily sodium intake",
-            style: TextStyle(color: Colors.black, fontSize: 21, fontWeight: FontWeight.bold, fontFamily: 'Itim'),
+            style: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold, fontFamily: 'Itim'),
           ),
           centerTitle: false,
           flexibleSpace: Container(
@@ -373,19 +373,9 @@ class SodiumTrackerAppState extends State<SodiumTrackerApp> {
           ),
           actions: [
             TextButton(
-              onPressed: () async {
+              onPressed: () {
                 Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HistoryPage(
-                      selectedFoods: selectedFoods,
-                      totalSodium: totalSodium,
-                    ),
-                  ),
-                ).then((_) {});
-
-                saveSodiumHistory(selectedFoods);
+                Navigator.pop(context);
               },
               child: const Text('Confirm'),
             ),
