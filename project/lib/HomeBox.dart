@@ -6,6 +6,7 @@ class HomeBox extends StatelessWidget {
   Color color = Colors.black;
 
   HomeBox(this.title, this.text, this.color);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +37,7 @@ class HomeBox extends StatelessWidget {
               child: Text(
             text,
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 16,
             ),
             textAlign: TextAlign.right,
           ))
