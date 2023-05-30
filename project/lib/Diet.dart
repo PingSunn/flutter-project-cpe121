@@ -314,7 +314,7 @@ class Weight extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 10.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      if (Bwg.getStatusBigWidget() == 'GOOD' && (Swg1.percentOut <= 1 || Swg1.percentOut >= 0.6) && (Swg2.percentOut == 1 || Swg2.percentOut >= 0.6)) {
+                      if (Bwg.getStatusBigWidget() == 'GOOD' && (Swg1.percentOut <= 1 && Swg1.percentOut >= 0.76) && (Swg2.percentOut <= 1 && Swg2.percentOut >= 0.76)) {
                         statusDiet = "คุณกินได้ดีเยี่ยม";
                       } else {
                         statusDiet = "การกินยังไม่เหมาะสม";
