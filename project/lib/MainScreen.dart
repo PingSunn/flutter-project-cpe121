@@ -75,11 +75,12 @@ class _MainScreenState extends State<MainScreen> {
               height: 30,
             ),
             GestureDetector(
-              onTap: () {
-                Navigator.push(
+              onTap: () async {
+                await Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Diet()),
                 );
+                initializeData();
               },
               child: Container(
                 child: HomeBox("Health Diet", statusDiet, Color(0xff94bbe9).withOpacity(0.75)),
